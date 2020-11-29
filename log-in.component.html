@@ -1,0 +1,211 @@
+<html>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+    .main {
+        /* height: 800px; */
+        display: flex;
+        /* flex-grow: 2; */
+        flex-direction: row;
+        align-items: stretch;
+    }
+    
+    .left_block {
+        display: flex;
+        /* flex-grow: 1; */
+        /* flex-basis: 0; */
+        margin: auto;
+        width: 50%;
+        margin-top: 5em;
+        /* margin-left: 2em; */
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        background-color: white;
+        /* align-items: center; */
+    }
+    
+    .right_block {
+        /* width: 42em; */
+        margin: auto;
+        width: 50%;
+        height: 43em;
+        display: flex;
+        /* flex-basis: 0; */
+        align-content: center;
+        flex-direction: column;
+        justify-content: center;
+        background-image: url("./images/image_block.jpg");
+    }
+    
+    p {
+        font-family: 'Open Sans', sans-serif;
+        font-style: normal;
+        font-weight: 300;
+        color: #ffffff;
+        margin: auto;
+    }
+    
+    p.right_block_button_text {
+        font-size: 150%;
+    }
+    
+    .left_block_title {
+        display: flex;
+        /* margin-left: auto;
+        margin-right: auto; */
+        margin: auto;
+        margin-top: 0em;
+        font-size: 300%;
+        color: #D25959;
+        font-weight: 400;
+    }
+    
+    .right_block_title {
+        margin-left: 20%;
+        margin-top: 0;
+        font-size: 350%;
+    }
+    
+    p.left_block_text {
+        font-size: 200%;
+        color: #000000;
+        font-weight: normal;
+        display: block
+    }
+    
+    p.left_block_button_text {
+        display: flex;
+        /* align-self: center; */
+        font-size: 150%;
+        color: #FFFFFF;
+    }
+    
+    .right_block_button {
+        display: flex;
+        width: 25em;
+        height: 4em;
+        margin-left: auto;
+        margin-right: auto;
+        border: 3px solid #ffffff;
+        border-radius: 54.5px;
+    }
+    
+    .image {
+        display: contents;
+        position: absolute;
+        margin: auto;
+        /* align-self: center; */
+        margin-right: 2em;
+        /* margin-left: 0em; */
+        width: 35em;
+        height: 50em;
+    }
+    
+    .left_block_input {
+        margin: auto;
+        /* margin-left: 3em; */
+        margin-right: auto;
+        font-size: 20px;
+        width: 20em;
+        height: 3em;
+        padding-left: 0.5em;
+        background: #F7F8FB;
+        border: 1px solid #D8B7B7;
+        box-sizing: border-box;
+        box-shadow: inset 2px 0px 5px rgba(0, 0, 0, 0.25);
+        border-radius: 12px;
+    }
+    
+    .left_block_button {
+        display: flex;
+        align-content: center;
+        width: 10em;
+        height: 3em;
+        background: #D25959;
+        border-radius: 10px;
+    }
+</style>
+
+
+
+<body style="margin: auto;">
+
+
+    <div class="main" role="main">
+
+        <div class="left_block">
+
+            <div style="align-self: center; ">
+                <p class="left_block_title">Войти в свой аккаунт</p>
+            </div>
+
+            <div style=" align-self: center; margin-top: 7em;">
+                <div style="align-self: flex-start;">
+                    <p class="left_block_text">E-mail</p>
+                </div>
+
+                <div>
+                    <input type="text" class="left_block_input" name="mail" id="mail">
+                </div>
+
+                <div style="align-self: flex-start; margin-top: 2em;">
+                    <p class="left_block_text">Пароль</p>
+                </div>
+
+                <div>
+                    <input type="text" class="left_block_input" name="password" id="password">
+                </div>
+            </div>
+
+            <div style="display: flex; margin-top: 3em; align-self: center; ">
+                <a class="left_block_button" onclick="log_in()">
+                    <p class="left_block_button_text">Войти</p>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="right_block">
+
+            <div class="right_block_title">
+                <p>Еще нет в нашей системе?</p>
+            </div>
+
+            <div style="display: flex; margin-top: 5em;">
+                <a class="right_block_button" href="./sign-up.component.html" style="text-decoration: none;">
+                    <p class="right_block_button_text">Создать</p>
+                </a>
+            </div>
+
+        </div>
+
+
+    </div>
+    <script async language="JavaScript">
+        function log_in() {
+            var e_mail = document.getElementById('mail').value;
+            var password = document.getElementById('password').value;
+
+            var xhr = new XMLHttpRequest();
+            console.log(e_mail, password)
+
+            var body = 'e_mail=' + encodeURIComponent(e_mail) +
+                '&password=' + encodeURIComponent(password);
+            console.log(body)
+
+            xhr.open("POST", '/log_in', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.send(body);
+            xhr.onreadystatechange = function() { // Ждём ответа от сервера
+                if (xhr.readyState == 4) { // Ответ пришёл
+                    if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
+                        console.log(xhr.responseText)
+                    }
+                }
+            };
+        }
+    </script>
+
+</body>
+
+</html>

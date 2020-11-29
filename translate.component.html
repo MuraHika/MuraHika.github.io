@@ -1,0 +1,390 @@
+<html>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap');
+    .main {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+    }
+    
+    .left_block {
+        display: flex;
+        flex-grow: 1;
+        margin: auto;
+        flex-basis: 0;
+        flex-direction: column;
+        margin-top: 3%;
+        margin-left: 10%;
+        justify-content: flex-start;
+    }
+    
+    .right_block {
+        display: flex;
+        margin: auto;
+        flex-grow: 1;
+        margin-left: 3%;
+        margin-top: 5.5%;
+        flex-basis: 0;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+    
+    p {
+        margin: auto;
+        font-family: 'Open Sans', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+    }
+    
+    .left_block_text {
+        font-family: 'Open Sans', sans-serif;
+        font-style: normal;
+        font-size: 25px;
+        line-height: 41px;
+        color: #000000;
+    }
+    
+    .left_block_input {
+        display: flex;
+        font-size: 15px;
+        background: #F7F8FB;
+        border: 1px solid #D8B7B7;
+        width: 45em;
+        height: 15em;
+        box-sizing: border-box;
+        box-shadow: inset 2px 0px 5px rgba(0, 0, 0, 0.25);
+        border-radius: 12px;
+    }
+    
+    .left_block_button {
+        display: flex;
+        background: #D25959;
+        width: 15em;
+        height: 2.5em;
+        border-radius: 10px;
+    }
+    
+    .left_block_button_text {
+        font-family: 'Open Sans', sans-serif;
+        font-style: normal;
+        font-size: 15px;
+        line-height: 27px;
+        color: #FFFFFF;
+    }
+    
+    .right_block_dict {
+        display: flex;
+        flex-grow: 1;
+        flex-basis: 0;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    
+    .right_block_form_dict_row {
+        display: flex;
+        flex-grow: 1;
+        flex-basis: 0;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    
+    .right_block_switch {
+        display: flex;
+        width: 70px;
+        height: 45px;
+    }
+    
+    .right_block_text {
+        font-family: 'Open Sans', sans-serif;
+        font-style: normal;
+        font-size: 25px;
+        margin-left: 1%;
+        margin-right: 3%;
+        line-height: 41px;
+        color: #000000;
+    }
+    
+    .right_block_info_icon {
+        display: flex;
+        width: "30px";
+        height: "30px";
+    }
+    
+    .right_block_button {
+        display: flex;
+        flex-grow: 1;
+        flex-basis: 0;
+        margin-top: 11%;
+        width: 15em;
+        height: 3em;
+        justify-content: flex-start;
+        background: #D25959;
+        border-radius: 10px;
+    }
+    
+    .right_block_button_text {
+        font-family: 'Open Sans', sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 41px;
+        color: #FFFFFF;
+    }
+    
+    .table_bkrs {
+        border-collapse: collapse;
+        text-align: left;
+        white-space: normal;
+        font-size: 17px;
+    }
+    
+    th {
+        text-align: center;
+        width: 25%;
+    }
+    
+    td {
+        width: 25%;
+        vertical-align: top;
+        padding-bottom: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+</style>
+
+<body style="margin: auto;">
+    <div class="main">
+        <div class="left_block">
+            <div class="left_block_text">
+                <p>Введите текст</p>
+            </div>
+            <div>
+                <textarea id="words" rows="10" cols="45" name="china_text" class="left_block_input" autofocus></textarea>
+            </div>
+            <div class="left_block_text">
+                <p>Распознать иероглифы с картинки</p>
+            </div>
+            <div>
+                <input type="file" onchange="transl(this)">
+                <a class="left_block_button">
+                    <p class="left_block_button_text">Загрузить</p>
+                </a>
+            </div>
+        </div>
+        <div class="right_block">
+            <div class="right_block_dict">
+                <div class="right_block_form_dict_row">
+                    <div>
+                        <img id="bkrs" class="right_block_switch" src="./images/switch_on.png" onClick="img_bkrs();">
+                    </div>
+                    <div class="right_block_text">
+                        <p>Словарь BKRS</p>
+                    </div>
+                    <div>
+                        <img class="right_block_info_icon" src="./images/info.png">
+                    </div>
+                </div>
+                <div class="right_block_form_dict_row">
+                    <div>
+                        <img id="zhonga" class="right_block_switch" src="./images/switch_off.png" onClick="img_zhonga();">
+                    </div>
+                    <div class="right_block_text">
+                        <p>Словарь Zhonga</p>
+                    </div>
+                    <div>
+                        <img class="right_block_info_icon" src="./images/info.png">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <a class="right_block_button" onclick="transl()">
+                    <p class="right_block_button_text">Перевести</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div style="position: absolute;left: 50%; margin-left: -500px; margin-top: 5em;">
+        <table id="table" class="table_bkrs" style="width: 1000px; margin-bottom: 5em;">
+
+        </table>
+    </div>
+
+    <script async language="JavaScript">
+        let flag_bkrs = 1;
+        let flag_zhonga = 0;
+
+
+        function transl(input) {
+            var words = document.getElementById('words').value;
+
+            var xhr = new XMLHttpRequest();
+            console.log(words)
+
+
+            // xhr.open("POST", '/translate', true);
+            // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            // xhr.send(words);
+            // xhr.onreadystatechange = function() { // Ждём ответа от сервера
+            //     if (xhr.readyState == 4) { // Ответ пришёл
+            //         if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
+            //             console.log(xhr.responseText)
+            //         }
+            //     }
+            // };
+
+
+            // let file = input.files[0];
+            // let reader = new FileReader();
+
+            // reader.readAsText(file);
+
+            // reader.onload = function() {
+            //     console.log(reader.result);
+            // };
+
+
+
+            var list_bkrs = new Set([
+                new Set(['滕', 'téng', new Set(['вм. 騰 (подниматься) 1) Тэн (княжество на террит. нынешней пров. ',
+                    'Шаньдун, дин. Чжоу) 2) Тэн (фамилия)'
+                ])]), new Set(['瑞', 'ruì', new Set(['1) скипетр (жаловался императором местным князьям); верительный ',
+                    'знак полководца (в виде яшмовой пластинки) 2) счастливое ', 'предзнаменование, благое знамение; счастливый, благоприятный; ',
+                    'благовещий; благостный; чудесный 1) геогр. (сокр. вм. 瑞典) Швеция; ', 'шведский 2) геогр. (сокр. вм. 瑞士) Швейцария; швейцарский 3) Жуй ', '(фамилия)'
+                ])])
+            ]);
+
+            var list_zhonga = new Set([new Set(['滕', 'téng', new Set(['I гл.', 'вм. 腾 (подниматься)', 'II собств.',
+                    '1) * Тэн (княжество на террит. нынешней пров. Шаньдун, дин. Чжоу)', '2) Тэн (фамилия)'
+                ])]),
+                new Set(['瑞', 'ruì', new Set(['I сущ.', '1) * скипетр (жаловался императором местным князьям) ; ',
+                    'верительный знак полководца (в виде яшмовой пластинки)', '2) счастливое предзнаменование, благое знамение; счастливый, ',
+                    'благоприятный; благовещий; благостный; чудесный', 'II собств.', '1) геогр. (сокр. вм. 瑞典) Швеция; шведский',
+                    '2) геогр. (сокр. вм. 瑞士) Швейцария; швейцарский',
+                    '3) Жуй (фамилия)'
+                ])])
+            ]);
+
+            // let mas = [
+            //     ['滕', 'téng', ['I гл.', 'вм. 腾 (подниматься)', 'II собств.',
+            //         '1) * Тэн (княжество на террит. нынешней пров. Шаньдун, дин. Чжоу)', '2) Тэн (фамилия)'
+            //     ]],
+            //     ['瑞', 'ruì', ['I сущ.', '1) * скипетр (жаловался императором местным князьям) ; ',
+            //         'верительный знак полководца (в виде яшмовой пластинки)', '2) счастливое предзнаменование, благое знамение; счастливый, ',
+            //         'благоприятный; благовещий; благостный; чудесный', 'II собств.', '1) геогр. (сокр. вм. 瑞典) Швеция; шведский',
+            //         '2) геогр. (сокр. вм. 瑞士) Швейцария; швейцарский',
+            //         '3) Жуй (фамилия)'
+            //     ]]
+            // ];
+            let mas = [
+                ['滕', 'téng', "I гл.\n вм. 腾 (подниматься)\nII собств.\n1) * Тэн (княжество на террит. нынешней пров. Шаньдун, дин. Чжоу)\n2) Тэн (фамилия)"],
+                ['瑞', 'ruì', 'I сущ.\n1) * скипетр (жаловался императором местным князьям); верительный знак полководца (в виде яшмовой пластинки)\n2) счастливое предзнаменование, благое знамение; счастливый, благоприятный; благовещий; благостный; чудесный\nII собств.\n1) геогр. (сокр. вм. 瑞典) Швеция; шведский\n2) геогр. (сокр. вм. 瑞士) Швейцария; швейцарский\n3) Жуй (фамилия)'],
+                ['瑞', 'ruì', 'I сущ.\n1) * скипетр (жаловался императором местным князьям); верительный знак полководца (в виде яшмовой пластинки)\n2) счастливое предзнаменование, благое знамение; счастливый, благоприятный; благовещий; благостный; чудесный\nII собств.\n1) геогр. (сокр. вм. 瑞典) Швеция; шведский\n2) геогр. (сокр. вм. 瑞士) Швейцария; швейцарский\n3) Жуй (фамилия)'],
+                ['瑞', 'ruì', 'I сущ.\n1) * скипетр (жаловался императором местным князьям); верительный знак полководца (в виде яшмовой пластинки)\n2) счастливое предзнаменование, благое знамение; счастливый, благоприятный; благовещий; благостный; чудесный\nII собств.\n1) геогр. (сокр. вм. 瑞典) Швеция; шведский\n2) геогр. (сокр. вм. 瑞士) Швейцария; швейцарский\n3) Жуй (фамилия)'],
+                ['滕', 'téng', 'I гл.\n вм. 腾 (подниматься)\nII собств.\n1) * Тэн (княжество на террит. нынешней пров. Шаньдун, дин. Чжоу)\n2) Тэн (фамилия)'],
+                ['瑞', 'ruì', 'I сущ.\n1) * скипетр (жаловался императором местным князьям); верительный знак полководца (в виде яшмовой пластинки)\n2) счастливое предзнаменование, благое знамение; счастливый, благоприятный; благовещий; благостный; чудесный\nII собств.\n1) геогр. (сокр. вм. 瑞典) Швеция; шведский\n2) геогр. (сокр. вм. 瑞士) Швейцария; швейцарский\n3) Жуй (фамилия)']
+            ];
+
+            console.log(mas);
+            var table = document.getElementById("table");
+            var rowCount = table.rows.length;
+            for (var i = 0; i < rowCount; i++) {
+                table.deleteRow(0);
+            }
+            if (flag_bkrs != 0) {
+
+                let count = 0;
+                while (count < mas.length) {
+                    let table = document.querySelector('#table');
+
+                    let tr = document.createElement('tr');
+                    let td;
+                    for (let index = count; index < count + 4; index++) {
+                        if (index < mas.length) {
+                            td = document.createElement('th');
+                            td.innerHTML = mas[index][0];
+                            tr.appendChild(td);
+                        }
+                    }
+                    table.appendChild(tr);
+
+                    tr = document.createElement('tr');
+                    for (let index = count; index < count + 4; index++) {
+                        if (index < mas.length) {
+                            td = document.createElement('th');
+                            td.innerHTML = mas[index][1];
+                            tr.appendChild(td);
+                        }
+                    }
+                    table.appendChild(tr);
+
+                    tr = document.createElement('tr');
+                    for (let index = count; index < count + 4; index++) {
+                        if (index < mas.length) {
+                            td = document.createElement('td');
+                            td.innerHTML = mas[index][2];
+                            tr.appendChild(td);
+                        }
+                    }
+                    table.appendChild(tr);
+                    count += 4;
+                }
+            }
+
+            // let tr = document.createElement('td');
+            // tr.innerHTML = mas[i][0];
+
+            // let td = document.createElement('tr');
+            // td.innerHTML = mas[i][1];
+            // tr.appendChild(td);
+
+            // for (let j = 0; j < mas[i][2].length; j++) {
+            //     let td = document.createElement('tr');
+            //     td.innerHTML = mas[i][2][j];
+            //     tr.appendChild(td);
+            // }
+
+            // td = document.createElement('tr');
+            // td.innerHTML = mas[i][2];
+            // tr.appendChild(td);
+
+
+            // table.appendChild(tr);
+            // alert(value);
+            // }
+
+        }
+
+        function img_bkrs() {
+            var image = document.getElementById("bkrs");
+            let src = image.src.split("/");
+            let png = src[src.length - 1]
+            console.log(png)
+            if (png == "switch_on.png" && flag_zhonga != 0) {
+                image.src = "./images/switch_off.png";
+                flag_bkrs = 0;
+            } else if (png == "switch_off.png") {
+                image.src = "./images/switch_on.png";
+                flag_bkrs = 1;
+            }
+
+        }
+
+        function img_zhonga() {
+            var image = document.getElementById("zhonga");
+            let src = image.src.split("/");
+            let png = src[src.length - 1]
+            console.log(png)
+            if (png == "switch_on.png" && flag_bkrs != 0) {
+                image.src = "./images/switch_off.png";
+                flag_zhonga = 0;
+            } else if (png == "switch_off.png") {
+                image.src = "./images/switch_on.png";
+                flag_zhonga = 1;
+            }
+
+        }
+    </script>
+</body>
+
+</html>
