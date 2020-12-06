@@ -175,6 +175,7 @@
                 var e_mail = document.getElementById('mail').value;
                 var password = document.getElementById('pass').value;
 
+                var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
                 var xhr = new XMLHttpRequest();
                 var json = JSON.stringify({
                     mail: e_mail,
