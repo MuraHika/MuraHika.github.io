@@ -178,12 +178,11 @@
                 var xhr = new XMLHttpRequest();
                 console.log(user_name, e_mail, password)
 
-                var body = 'name=' + encodeURIComponent(user_name) +
-                    '&e_mail=' + encodeURIComponent(e_mail) +
-                    '&password=' + encodeURIComponent(password);
+                var body = 'mail: ' + encodeURIComponent(e_mail) + ' username: ' + encodeURIComponent(user_name) +
+                    'password: ' + encodeURIComponent(password);
                 console.log(body)
 
-                xhr.open("POST", '/sign_up', true);
+                xhr.open("POST", 'https://glacial-island-86307.herokuapp.com/register', true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                 xhr.send(body);
                 xhr.onreadystatechange = function() { // Ждём ответа от сервера
@@ -191,8 +190,11 @@
                         if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
                             console.log("Added")
                         }
+                        console.log("What")
                     }
+                    console.log("Maybe")
                 };
+                console.log("end")
             }
         </script>
 </body>
