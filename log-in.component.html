@@ -186,16 +186,17 @@
             var e_mail = document.getElementById('mail').value;
             var password = document.getElementById('password').value;
 
+            var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
             var xhr = new XMLHttpRequest();
-            console.log(e_mail, password)
+            var json = JSON.stringify({
+                mail: e_mail,
+                password: password
+            });
 
-            var body = 'e_mail=' + encodeURIComponent(e_mail) +
-                '&password=' + encodeURIComponent(password);
-            console.log(body)
 
-            xhr.open("POST", '/log_in', true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.send(body);
+            xhr.open("POST", 'https://glacial-island-86307.herokuapp.com/login', true);
+            xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+            xhr.send(json);
             xhr.onreadystatechange = function() { // Ждём ответа от сервера
                 if (xhr.readyState == 4) { // Ответ пришёл
                     if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
