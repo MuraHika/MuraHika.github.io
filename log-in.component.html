@@ -201,7 +201,7 @@
                 if (xhr.readyState == 4) { // Ответ пришёл
                     if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
                         console.log(xhr.responseText)
-                        object_item = JSON.parse(xhr.responseText);
+                        var object_item = JSON.parse(xhr.responseText);
                         console.log(object_item)
                     }
                 }
