@@ -202,9 +202,9 @@
                     if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
                         console.log(xhr.responseText)
                         var object_item = JSON.parse(xhr.responseText);
-                        var a = object_item[0].token;
-                        // console.log(a)
-                        document.cookie = "token=" + encodeURIComponent(a);
+                        // var a = object_item[0].token;
+                        console.log(object_item)
+                        document.cookie = "token=" + encodeURIComponent(object_item);
                         document.location.replace("https://murahika.github.io/translate.component.html");
                     }
                 }
