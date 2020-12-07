@@ -220,18 +220,31 @@
 
             var xhr = new XMLHttpRequest();
             console.log(words)
+            var json = JSON.stringify({
+                text: words
+            });
+            console.log(json)
 
+            let bkrs = 'False';
+            let zhonga = 'False';
+            if (flag_bkrs == 1) {
+                bkrs = 'True';
+            }
+            if (flag_zhonga == 1) {
+                zhonga = 'True';
+            }
 
-            // xhr.open("POST", '/translate', true);
-            // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            // xhr.send(words);
-            // xhr.onreadystatechange = function() { // Ждём ответа от сервера
-            //     if (xhr.readyState == 4) { // Ответ пришёл
-            //         if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
-            //             console.log(xhr.responseText)
-            //         }
-            //     }
-            // };
+            xhr.open("POST", 'https://glacial-island-86307.herokuapp.com/translate/?bkrs=' + bkrs + '&zhonga=' + zhonga, true);
+            xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+            xhr.send(json);
+            xhr.onreadystatechange = function() { // Ждём ответа от сервера
+                if (xhr.readyState == 4) { // Ответ пришёл
+                    if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
+                        console.log(xhr.responseText)
+                    }
+                }
+            };
+            console.log(xhr.responseText)
 
 
             // let file = input.files[0];
