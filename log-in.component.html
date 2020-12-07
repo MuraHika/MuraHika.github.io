@@ -202,7 +202,8 @@
                     if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
                         console.log(xhr.responseText)
                         var object_item = JSON.parse(xhr.responseText);
-                        console.log(object_item)
+                        var a = object_item[0].token;
+                        console.log(a)
                     }
                 }
             };
