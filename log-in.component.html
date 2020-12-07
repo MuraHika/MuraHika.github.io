@@ -204,9 +204,9 @@
                         var data = xhr.responseText;
                         console.log(data)
                         var object_item = JSON.parse(data);
-                        // var a = object_item[0].token;
-                        console.log(object_item)
-                        document.cookie = "token=" + encodeURIComponent(object_item);
+                        var a = object_item[0].token;
+                        console.log(a)
+                        document.cookie = "token=" + encodeURIComponent(a);
                         document.location.replace("https://murahika.github.io/translate.component.html");
                     }
                 }
