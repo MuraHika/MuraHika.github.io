@@ -209,7 +209,7 @@
                             // var object_item = JSON.parse(data);
                             // var a = object_item[0].token;
                             // console.log(a)
-                        document.cookie = "token=" + user_token;
+                        document.cookie = "token=" + encodeURIComponent(user_token);
                         document.location.replace("https://murahika.github.io/translate.component.html");
                     }
                 }
