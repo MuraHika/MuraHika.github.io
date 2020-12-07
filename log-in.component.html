@@ -200,8 +200,10 @@
             xhr.onreadystatechange = function() { // Ждём ответа от сервера
                 if (xhr.readyState == 4) { // Ответ пришёл
                     if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
-                        console.log(xhr.responseText)
-                        var object_item = JSON.parse(xhr.responseText);
+                        // console.log(xhr.responseText)
+                        var data = xhr.responseText;
+                        console.log(data)
+                        var object_item = JSON.parse(data);
                         // var a = object_item[0].token;
                         console.log(object_item)
                         document.cookie = "token=" + encodeURIComponent(object_item);
