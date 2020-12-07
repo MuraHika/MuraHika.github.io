@@ -201,9 +201,9 @@
                 if (xhr.readyState == 4) { // Ответ пришёл
                     if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
                         console.log(xhr.responseText)
-                        var object_item = JSON.parse(xhr.responseText);
-                        var a = object_item[0].token;
-                        console.log(a)
+                            // var object_item = JSON.parse(xhr.responseText);
+                            // var a = object_item[0].token;
+                            // console.log(a)
                         document.location.href = "https://murahika.github.io/translate.component.html";
                     }
                 }
