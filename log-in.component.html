@@ -188,6 +188,7 @@
 
             // var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
             var xhr = new XMLHttpRequest();
+            xhr.withCredentials = true;
             var json = JSON.stringify({
                 mail: e_mail,
                 password: password
@@ -209,7 +210,7 @@
                             // var object_item = JSON.parse(data);
                             // var a = object_item[0].token;
                             // console.log(a)
-                        Vue.http.options.credentials = true;
+                            // Vue.http.options.credentials = true;
                         document.cookie = "Token=" + encodeURIComponent(user_token);
                         document.location.replace("https://murahika.github.io/translate.component.html");
                     }
