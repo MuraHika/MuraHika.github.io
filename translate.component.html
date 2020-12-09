@@ -243,7 +243,7 @@
             xhr.onreadystatechange = function() { // Ждём ответа от сервера
                 if (xhr.readyState == 4) { // Ответ пришёл
                     if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
-                        // console.log(xhr.responseText)
+                        console.log(xhr.responseText)
                         var data = xhr.responseText;
                         var json1 = JSON.parse(data);
                         if (flag_bkrs == 1) {
@@ -252,11 +252,12 @@
                         } else if (flag_zhonga == 1) {
                             zhonga_data = json1.zhonga;
                         }
+                        console.log(bkrs_data)
+                        console.log(zhonga_data)
                     }
                 }
             };
-            console.log(bkrs_data)
-            console.log(zhonga_data)
+
 
             // let file = input.files[0];
             // let reader = new FileReader();
