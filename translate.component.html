@@ -219,6 +219,7 @@
             var words = document.getElementById('words').value;
 
             var xhr = new XMLHttpRequest();
+            xhr.withCredentials = true;
             console.log(words)
             var json = JSON.stringify({
                 text: words
