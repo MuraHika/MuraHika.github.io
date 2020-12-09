@@ -247,6 +247,7 @@
                         var data = xhr.responseText;
                         var json1 = JSON.parse(data);
                         if (flag_bkrs == 1) {
+                            console.log("Write in bkrs")
                             bkrs_data = json1.bkrs;
                         } else if (flag_zhonga == 1) {
                             zhonga_data = json1.zhonga;
