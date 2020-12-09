@@ -254,6 +254,51 @@
                         }
                         // console.log(bkrs_data)
                         // console.log(zhonga_data)
+                        console.log(bkrs_data);
+                        var table = document.getElementById("table");
+                        var rowCount = table.rows.length;
+                        for (var i = 0; i < rowCount; i++) {
+                            table.deleteRow(0);
+                        }
+                        if (flag_bkrs != 0) {
+
+                            let count = 0;
+                            while (count < bkrs_data.length) {
+                                let table = document.querySelector('#table');
+
+                                let tr = document.createElement('tr');
+                                let td;
+                                for (let index = count; index < count + 4; index++) {
+                                    if (index < bkrs_data.length) {
+                                        td = document.createElement('th');
+                                        td.innerHTML = bkrs_data[index][0];
+                                        tr.appendChild(td);
+                                    }
+                                }
+                                table.appendChild(tr);
+
+                                tr = document.createElement('tr');
+                                for (let index = count; index < count + 4; index++) {
+                                    if (index < bkrs_data.length) {
+                                        td = document.createElement('th');
+                                        td.innerHTML = bkrs_data[index][1];
+                                        tr.appendChild(td);
+                                    }
+                                }
+                                table.appendChild(tr);
+
+                                tr = document.createElement('tr');
+                                for (let index = count; index < count + 4; index++) {
+                                    if (index < bkrs_data.length) {
+                                        td = document.createElement('td');
+                                        td.innerHTML = bkrs_data[index][2];
+                                        tr.appendChild(td);
+                                    }
+                                }
+                                table.appendChild(tr);
+                                count += 4;
+                            }
+                        }
                     }
                 }
             };
@@ -269,51 +314,7 @@
             //     ['瑞', 'ruì', 'I сущ.\n1) * скипетр (жаловался императором местным князьям); верительный знак полководца (в виде яшмовой пластинки)\n2) счастливое предзнаменование, благое знамение; счастливый, благоприятный; благовещий; благостный; чудесный\nII собств.\n1) геогр. (сокр. вм. 瑞典) Швеция; шведский\n2) геогр. (сокр. вм. 瑞士) Швейцария; швейцарский\n3) Жуй (фамилия)']
             // ];
 
-            console.log(bkrs_data);
-            var table = document.getElementById("table");
-            var rowCount = table.rows.length;
-            for (var i = 0; i < rowCount; i++) {
-                table.deleteRow(0);
-            }
-            if (flag_bkrs != 0) {
 
-                let count = 0;
-                while (count < bkrs_data.length) {
-                    let table = document.querySelector('#table');
-
-                    let tr = document.createElement('tr');
-                    let td;
-                    for (let index = count; index < count + 4; index++) {
-                        if (index < bkrs_data.length) {
-                            td = document.createElement('th');
-                            td.innerHTML = bkrs_data[index][0];
-                            tr.appendChild(td);
-                        }
-                    }
-                    table.appendChild(tr);
-
-                    tr = document.createElement('tr');
-                    for (let index = count; index < count + 4; index++) {
-                        if (index < bkrs_data.length) {
-                            td = document.createElement('th');
-                            td.innerHTML = bkrs_data[index][1];
-                            tr.appendChild(td);
-                        }
-                    }
-                    table.appendChild(tr);
-
-                    tr = document.createElement('tr');
-                    for (let index = count; index < count + 4; index++) {
-                        if (index < bkrs_data.length) {
-                            td = document.createElement('td');
-                            td.innerHTML = bkrs_data[index][2];
-                            tr.appendChild(td);
-                        }
-                    }
-                    table.appendChild(tr);
-                    count += 4;
-                }
-            }
 
             // let tr = document.createElement('td');
             // tr.innerHTML = mas[i][0];
