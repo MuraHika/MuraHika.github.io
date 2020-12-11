@@ -12,7 +12,6 @@
         width: 50%;
         height: 43em;
         display: flex;
-        /* flex-basis: 0; */
         align-content: center;
         flex-direction: column;
         justify-content: center;
@@ -21,17 +20,13 @@
     
     .right_block {
         display: flex;
-        /* flex-grow: 1; */
-        /* flex-basis: 0; */
         margin: auto;
         width: 50%;
         margin-top: 3em;
-        /* margin-left: 2em; */
         flex-direction: column;
         justify-content: center;
         align-content: center;
         background-color: white;
-        /* align-items: center; */
     }
     
     p {
@@ -54,8 +49,6 @@
     
     .right_block_title {
         display: flex;
-        /* margin-left: auto;
-        margin-right: auto; */
         margin: auto;
         margin-top: 0em;
         font-size: 300%;
@@ -72,7 +65,6 @@
     
     p.right_block_button_text {
         display: flex;
-        /* align-self: center; */
         font-size: 150%;
         color: #FFFFFF;
     }
@@ -89,7 +81,6 @@
     
     .right_block_input {
         margin: auto;
-        /* margin-left: 3em; */
         margin-right: auto;
         font-size: 20px;
         width: 20em;
@@ -160,6 +151,10 @@
                 <div>
                     <input type="text" class="right_block_input" name="password" id="pass">
                 </div>
+
+                <div>
+                    <p id="empty"></p>
+                </div>
             </div>
 
             <div style="display: flex; margin-top: 3em; align-self: center; ">
@@ -171,59 +166,42 @@
 
         <script>
             function sign_up() {
+                var empty = document.getElementById('empty').value
                 var user_name = document.getElementById('name').value;
                 var e_mail = document.getElementById('mail').value;
                 var password = document.getElementById('pass').value;
 
-                // var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-                var xhr = new XMLHttpRequest();
-                xhr.withCredentials = true;
-                var json = JSON.stringify({
-                    mail: e_mail,
-                    username: user_name,
-                    password: password
-                });
-                console.log(json)
+                if (user_name != "" && e_mail != "" && password != "") {
+                    var xhr = new XMLHttpRequest();
+                    xhr.withCredentials = true;
+                    var json = JSON.stringify({
+                        mail: e_mail,
+                        username: user_name,
+                        password: password
+                    });
+                    console.log(json)
 
 
-                xhr.open("POST", 'https://glacial-island-86307.herokuapp.com/register', true);
-                xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+                    xhr.open("POST", 'https://glacial-island-86307.herokuapp.com/register', true);
+                    xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
-                xhr.onreadystatechange = function() { // Ждём ответа от сервера
-                    if (xhr.readyState == 4) { // Ответ пришёл
-                        if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
-                            console.log("Added")
+                    xhr.onreadystatechange = function() { // Ждём ответа от сервера
+                        if (xhr.readyState == 4) { // Ответ пришёл
+                            if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
+                                console.log("Added")
+                            }
+                            console.log("What")
                         }
-                        console.log("What")
-                    }
-                    console.log("Maybe")
-                };
-                console.log("end")
-                xhr.send(json);
+                        console.log("Maybe")
+                    };
+                    console.log("end")
+                    xhr.send(json);
+                } else {
+                    empty.textContent = "Заполнены не все необходимые поля!"
+                }
             }
         </script>
 </body>
 
 </html>
-
-<!-- <form> -->
-<!-- <div class="d7"> -->
-<!-- <p><b>Имя пользователя:</b><br> -->
-<!-- <input type="text" size="40" name="user_name" [(ngModel)]="user_name"> -->
-<!-- <input type="text" size="40" name="user_name"> -->
-<!-- </p> -->
-
-<!-- <p><b>E-mail:</b><br> -->
-<!-- <input type="text" size="40" name="e_mail" [(ngModel)]="e_mail"> -->
-<!-- <input type="text" size="40" name="e_mail"> -->
-<!-- </p> -->
-
-<!-- <p><b>Пароль:</b><br> -->
-<!-- <input type="text" size="40" name="hash_password" [(ngModel)]="hash_password"> -->
-<!-- <input type="text" size="40" name="hash_password"> -->
-<!-- </p> -->
-<!-- <a class="knopka" (click)="register(e_mail, hash_password, user_name)">Зарегистрироваться</a> -->
-<!-- <a class="knopka">Зарегистрироваться</a> -->
-<!-- </div> -->
-<!-- </form> -->
 </div>

@@ -2,35 +2,27 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
     .main {
-        /* height: 800px; */
         display: flex;
-        /* flex-grow: 2; */
         flex-direction: row;
         align-items: stretch;
     }
     
     .left_block {
         display: flex;
-        /* flex-grow: 1; */
-        /* flex-basis: 0; */
         margin: auto;
         width: 50%;
         margin-top: 5em;
-        /* margin-left: 2em; */
         flex-direction: column;
         justify-content: center;
         align-content: center;
         background-color: white;
-        /* align-items: center; */
     }
     
     .right_block {
-        /* width: 42em; */
         margin: auto;
         width: 50%;
         height: 43em;
         display: flex;
-        /* flex-basis: 0; */
         align-content: center;
         flex-direction: column;
         justify-content: center;
@@ -51,8 +43,6 @@
     
     .left_block_title {
         display: flex;
-        /* margin-left: auto;
-        margin-right: auto; */
         margin: auto;
         margin-top: 0em;
         font-size: 300%;
@@ -75,7 +65,6 @@
     
     p.left_block_button_text {
         display: flex;
-        /* align-self: center; */
         font-size: 150%;
         color: #FFFFFF;
     }
@@ -94,16 +83,13 @@
         display: contents;
         position: absolute;
         margin: auto;
-        /* align-self: center; */
         margin-right: 2em;
-        /* margin-left: 0em; */
         width: 35em;
         height: 50em;
     }
     
     .left_block_input {
         margin: auto;
-        /* margin-left: 3em; */
         margin-right: auto;
         font-size: 20px;
         width: 20em;
@@ -201,16 +187,10 @@
             xhr.onreadystatechange = function() { // Ждём ответа от сервера
                 if (xhr.readyState == 4) { // Ответ пришёл
                     if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
-                        // console.log(xhr.responseText)
-
                         var data = xhr.responseText;
                         var json1 = JSON.parse(data);
                         var user_token = json1.token;
                         console.log(user_token)
-                            // var object_item = JSON.parse(data);
-                            // var a = object_item[0].token;
-                            // console.log(a)
-                            // Vue.http.options.credentials = true;
                         document.cookie = "Token=" + encodeURIComponent(user_token);
                         document.location.replace("https://murahika.github.io/translate.component.html");
                     }
