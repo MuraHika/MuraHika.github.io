@@ -204,6 +204,9 @@
             </div>
         </div>
     </div>
+    <div>
+        <p id="empty" style="color:#D25959; justify-content: center; align-content: center;"></p>
+    </div>
     <div style="position: absolute;left: 50%; margin-left: -500px; margin-top: 5em;">
         <table id="table" class="table_bkrs" style="width: 1000px; margin-bottom: 5em;">
 
@@ -216,93 +219,97 @@
 
 
         function transl(input) {
+            var empty = document.getElementById('empty')
             var words = document.getElementById('words').value;
+            if (words.length < 300) {
+                empty.innerHTML = '';
+                var xhr = new XMLHttpRequest();
+                xhr.withCredentials = true;
+                console.log(words)
+                var json = JSON.stringify({
+                    text: words
+                });
+                console.log(json)
 
-            var xhr = new XMLHttpRequest();
-            xhr.withCredentials = true;
-            console.log(words)
-            var json = JSON.stringify({
-                text: words
-            });
-            console.log(json)
+                let bkrs = 'False';
+                let zhonga = 'False';
+                if (flag_bkrs == 1) {
+                    bkrs = 'True';
+                }
+                if (flag_zhonga == 1) {
+                    zhonga = 'True';
+                }
 
-            let bkrs = 'False';
-            let zhonga = 'False';
-            if (flag_bkrs == 1) {
-                bkrs = 'True';
-            }
-            if (flag_zhonga == 1) {
-                zhonga = 'True';
-            }
+                xhr.open("POST", 'https://glacial-island-86307.herokuapp.com/translate/?bkrs=' + bkrs + '&zhonga=' + zhonga, true);
+                xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+                xhr.send(json);
+                var bkrs_data;
+                var zhonga_data;
+                xhr.onreadystatechange = function() { // Ждём ответа от сервера
+                    if (xhr.readyState == 4) { // Ответ пришёл
+                        if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
+                            console.log(xhr.responseText)
+                            var data = xhr.responseText;
+                            var json1 = JSON.parse(data);
+                            if (flag_bkrs == 1) {
+                                console.log("Write in bkrs")
+                                bkrs_data = json1.bkrs;
+                            } else if (flag_zhonga == 1) {
+                                zhonga_data = json1.zhonga;
+                            }
+                            // console.log(bkrs_data)
+                            // console.log(zhonga_data)
+                            console.log(bkrs_data);
+                            var table = document.getElementById("table");
+                            var rowCount = table.rows.length;
+                            for (var i = 0; i < rowCount; i++) {
+                                table.deleteRow(0);
+                            }
+                            if (flag_bkrs != 0) {
 
-            xhr.open("POST", 'https://glacial-island-86307.herokuapp.com/translate/?bkrs=' + bkrs + '&zhonga=' + zhonga, true);
-            xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-            xhr.send(json);
-            var bkrs_data;
-            var zhonga_data;
-            xhr.onreadystatechange = function() { // Ждём ответа от сервера
-                if (xhr.readyState == 4) { // Ответ пришёл
-                    if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
-                        console.log(xhr.responseText)
-                        var data = xhr.responseText;
-                        var json1 = JSON.parse(data);
-                        if (flag_bkrs == 1) {
-                            console.log("Write in bkrs")
-                            bkrs_data = json1.bkrs;
-                        } else if (flag_zhonga == 1) {
-                            zhonga_data = json1.zhonga;
-                        }
-                        // console.log(bkrs_data)
-                        // console.log(zhonga_data)
-                        console.log(bkrs_data);
-                        var table = document.getElementById("table");
-                        var rowCount = table.rows.length;
-                        for (var i = 0; i < rowCount; i++) {
-                            table.deleteRow(0);
-                        }
-                        if (flag_bkrs != 0) {
+                                let count = 0;
+                                while (count < bkrs_data.length) {
+                                    let table = document.querySelector('#table');
 
-                            let count = 0;
-                            while (count < bkrs_data.length) {
-                                let table = document.querySelector('#table');
-
-                                let tr = document.createElement('tr');
-                                let td;
-                                for (let index = count; index < count + 4; index++) {
-                                    if (index < bkrs_data.length) {
-                                        td = document.createElement('th');
-                                        td.innerHTML = bkrs_data[index][0];
-                                        tr.appendChild(td);
+                                    let tr = document.createElement('tr');
+                                    let td;
+                                    for (let index = count; index < count + 4; index++) {
+                                        if (index < bkrs_data.length) {
+                                            td = document.createElement('th');
+                                            td.innerHTML = bkrs_data[index][0];
+                                            tr.appendChild(td);
+                                        }
                                     }
-                                }
-                                table.appendChild(tr);
+                                    table.appendChild(tr);
 
-                                tr = document.createElement('tr');
-                                for (let index = count; index < count + 4; index++) {
-                                    if (index < bkrs_data.length) {
-                                        td = document.createElement('th');
-                                        td.innerHTML = bkrs_data[index][1];
-                                        tr.appendChild(td);
+                                    tr = document.createElement('tr');
+                                    for (let index = count; index < count + 4; index++) {
+                                        if (index < bkrs_data.length) {
+                                            td = document.createElement('th');
+                                            td.innerHTML = bkrs_data[index][1];
+                                            tr.appendChild(td);
+                                        }
                                     }
-                                }
-                                table.appendChild(tr);
+                                    table.appendChild(tr);
 
-                                tr = document.createElement('tr');
-                                for (let index = count; index < count + 4; index++) {
-                                    if (index < bkrs_data.length) {
-                                        td = document.createElement('td');
-                                        td.innerHTML = bkrs_data[index][2];
-                                        tr.appendChild(td);
+                                    tr = document.createElement('tr');
+                                    for (let index = count; index < count + 4; index++) {
+                                        if (index < bkrs_data.length) {
+                                            td = document.createElement('td');
+                                            td.innerHTML = bkrs_data[index][2];
+                                            tr.appendChild(td);
+                                        }
                                     }
+                                    table.appendChild(tr);
+                                    count += 4;
                                 }
-                                table.appendChild(tr);
-                                count += 4;
                             }
                         }
                     }
-                }
-            };
-
+                };
+            } else {
+                empty.innerHTML = 'Количество символов не должно превышать 300 включительно!';
+            }
 
 
             // let mas = [
