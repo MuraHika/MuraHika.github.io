@@ -141,6 +141,10 @@
                 <div>
                     <input type="text" class="left_block_input" name="password" id="password">
                 </div>
+
+                <div>
+                    <p id="empty" style="color:#D25959; justify-content: center; align-content: center;"></p>
+                </div>
             </div>
 
             <div style="display: flex; margin-top: 3em; align-self: center; ">
@@ -169,33 +173,39 @@
     </div>
     <script async language="JavaScript">
         function log_in() {
+            var empty = document.getElementById('empty')
             var e_mail = document.getElementById('mail').value;
             var password = document.getElementById('password').value;
 
+            if (e_mail != "" && password != "") {
+                empty.innerHTML = '';
 
-            var xhr = new XMLHttpRequest();
-            xhr.withCredentials = true;
-            var json = JSON.stringify({
-                mail: e_mail,
-                password: password
-            });
-            console.log(json)
+                var xhr = new XMLHttpRequest();
+                xhr.withCredentials = true;
+                var json = JSON.stringify({
+                    mail: e_mail,
+                    password: password
+                });
+                console.log(json)
 
-            xhr.open("POST", 'https://glacial-island-86307.herokuapp.com/login', true);
-            xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-            xhr.send(json);
-            xhr.onreadystatechange = function() { // Ждём ответа от сервера
-                if (xhr.readyState == 4) { // Ответ пришёл
-                    if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
-                        var data = xhr.responseText;
-                        var json1 = JSON.parse(data);
-                        var user_token = json1.token;
-                        console.log(user_token)
-                        document.cookie = "Token=" + encodeURIComponent(user_token);
-                        document.location.replace("https://murahika.github.io/translate.component.html");
+                xhr.open("POST", 'https://glacial-island-86307.herokuapp.com/login', true);
+                xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+                xhr.send(json);
+                xhr.onreadystatechange = function() { // Ждём ответа от сервера
+                    if (xhr.readyState == 4) { // Ответ пришёл
+                        if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
+                            var data = xhr.responseText;
+                            var json1 = JSON.parse(data);
+                            var user_token = json1.token;
+                            console.log(user_token)
+                            document.cookie = "Token=" + encodeURIComponent(user_token);
+                            document.location.replace("https://murahika.github.io/translate.component.html");
+                        }
                     }
-                }
-            };
+                };
+            } else {
+                empty.innerHTML = 'Заполнены не все необходимые поля!';
+            }
         }
     </script>
 

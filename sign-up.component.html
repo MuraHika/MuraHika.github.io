@@ -192,6 +192,8 @@
                             if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
                                 console.log("Added")
                                 document.location.replace("https://murahika.github.io/translate.component.html");
+                            } else if (xhr.status == 403) {
+                                empty.innerHTML = 'Данный пользователь уже существует!';
                             }
                             console.log("What")
                         }
@@ -201,7 +203,6 @@
                     xhr.send(json);
                 } else {
                     empty.innerHTML = 'Заполнены не все необходимые поля!';
-                    // empty.textContent = "Заполнены не все необходимые поля!"
                 }
             }
         </script>
