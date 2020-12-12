@@ -197,11 +197,7 @@
                     console.log("end")
                     xhr.send(json);
                 } else {
-                    if (typeof empty.textContent !== "undefined") {
-                        empty.textContent = "Заполнены не все необходимые поля!";
-                    } else {
-                        empty.innerText = "Заполнены не все необходимые поля!";
-                    }
+                    empty.innerHTML = 'Заполнены не все необходимые поля!';
                     // empty.textContent = "Заполнены не все необходимые поля!"
                 }
             }
