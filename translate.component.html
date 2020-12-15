@@ -335,8 +335,8 @@
 
         function set_usermame() {
             var user_n = document.getElementsByTagName("p")['0'].textContent;
-            console.log(user_n)
-            if (user_n == "") {
+            console.log(user_n.length)
+            if (user_n.length == 0) {
                 var xhr = new XMLHttpRequest();
                 xhr.withCredentials = true;
 
