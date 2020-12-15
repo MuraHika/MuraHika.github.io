@@ -315,6 +315,46 @@
                                     count += 4;
                                 }
                             }
+
+                            if (flag_zhonga != 0) {
+
+                                let count = 0;
+                                while (count < zhonga_data.length) {
+                                    let table = document.querySelector('#table');
+
+                                    let tr = document.createElement('tr');
+                                    let td;
+                                    for (let index = count; index < count + 4; index++) {
+                                        if (index < zhonga_data.length) {
+                                            td = document.createElement('th');
+                                            td.innerHTML = zhonga_data[index][0];
+                                            tr.appendChild(td);
+                                        }
+                                    }
+                                    table.appendChild(tr);
+
+                                    tr = document.createElement('tr');
+                                    for (let index = count; index < count + 4; index++) {
+                                        if (index < zhonga_data.length) {
+                                            td = document.createElement('th');
+                                            td.innerHTML = zhonga_data[index][1];
+                                            tr.appendChild(td);
+                                        }
+                                    }
+                                    table.appendChild(tr);
+
+                                    tr = document.createElement('tr');
+                                    for (let index = count; index < count + 4; index++) {
+                                        if (index < zhonga_data.length) {
+                                            td = document.createElement('td');
+                                            td.innerHTML = zhonga_data[index][2];
+                                            tr.appendChild(td);
+                                        }
+                                    }
+                                    table.appendChild(tr);
+                                    count += 4;
+                                }
+                            }
                         }
                     }
                 };
