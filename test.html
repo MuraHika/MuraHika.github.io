@@ -24,14 +24,57 @@
 <body>
 
     <script>
-        function pow(x, n) {
-            var result = 1;
+        function log_in(e_mail, password) {
+            var empty = "";
+            var check_e_mail = "mango@mail.ru";
+            var check_pass = "mango99";
 
-            for (var i = 0; i < n; i++) {
-                result *= x;
+            if (e_mail != "" && password != "") {
+
+                if (check_e_mail == e_mail && check_pass == password) {
+                    empty = 'Пользователь авторизован!';
+                } else {
+                    empty = 'E-mail или пароль введены неправильно!';
+                }
+            } else {
+                empty = 'Заполнены не все необходимые поля!';
             }
+            return empty;
+        }
 
-            return result;
+        function sign_up(user_name, e_mail, password) {
+            var empty = "";
+            var check_user = "mango";
+            var check_e_mail = "mango@mail.ru";
+            var check_pass = "mango99";
+            if (e_mail != "" && password != "") {
+
+                if (check_e_mail == e_mail) {
+                    empty = 'Такой пользователь уже зарегистрирован!';
+                } else {
+                    if (password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*$/gi) == password && password.length >= 6) {
+                        empty = 'Пользователь зарегистрирован!';
+                    } else {
+                        empty = 'Пароль должен быть длиной не менее 6 символов и содержать символы из a-z, A-Z, 0-9';
+                    }
+                }
+            } else {
+                empty = 'Заполнены не все необходимые поля!';
+            }
+            return empty;
+        }
+
+        function trans(words) {
+            var empty = "";
+            var size = words.length;
+            console.log(words.length)
+            if (size < 300) {
+                empty = 'Перевод прошел успешно!';
+            } else {
+                empty = 'Количество символов не должно превышать 300 включительно!';
+            }
+            console.log(empty)
+            return empty;
         }
     </script>
 

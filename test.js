@@ -1,44 +1,136 @@
-describe("pow", function() {
+describe("Тестирование функции регистрации", function() {
 
-    describe("возводит x в степень n", function() {
+    describe("Ввести корректные данные", function() {
 
-        function makeTest(x) {
-            var expected = x * x * x;
-            it("при возведении " + x + " в степень 3 результат: " + expected, function() {
-                assert.equal(pow(x, 3), expected);
+        function makeTest(user_name, e_mail, password) {
+            var expected = 'Пользователь зарегистрирован!';
+            it("При введении данных пользователя user_name: " + user_name + " e_mail: " + e_mail + ", password: " + password + ", результат: " + expected, function() {
+                assert.equal(sign_up(user_name, e_mail, password), expected);
             });
         }
-
-        for (var x = 1; x <= 5; x++) {
-            makeTest(x);
-        }
-
+        makeTest("User", "user@mail.ru", "User1111");
+        makeTest("", "user@mail.ru", "User1111");
     });
 
-    it("при возведении в отрицательную степень результат NaN", function() {
-        assert(isNaN(pow(2, -1)), "pow(2, -1) не NaN");
-    });
+    describe("Ввести данные с зарегистрированной почтой", function() {
 
-    it("при возведении в дробную степень результат NaN", function() {
-        assert(isNaN(pow(2, 1.5)), "pow(2, -1.5) не NaN");
-    });
-
-    describe("любое число, кроме нуля, в степени 0 равно 1", function() {
-
-        function makeTest(x) {
-            it("при возведении " + x + " в степень 0 результат: 1", function() {
-                assert.equal(pow(x, 0), 1);
+        function makeTest(user_name, e_mail, password) {
+            var expected = 'Такой пользователь уже зарегистрирован!';
+            it("При введении данных зарегистрированного пользователя e_mail: " + e_mail + ", результат: " + expected, function() {
+                assert.equal(sign_up(user_name, e_mail, password), expected);
             });
         }
-
-        for (var x = -5; x <= 5; x += 2) {
-            makeTest(x);
-        }
+        makeTest("user", "mango@mail.ru", "User111");
 
     });
 
-    it("ноль в нулевой степени даёт NaN", function() {
-        assert(isNaN(pow(0, 0)), "0 в степени 0 не NaN");
+    describe("Ввести данные с некорректным паролем", function() {
+
+        function makeTest(user_name, e_mail, password) {
+            var expected = 'Пароль должен быть длиной не менее 6 символов и содержать символы из a-z, A-Z, 0-9';
+            it("При введении данных зарегистрированного пользователя e_mail: " + e_mail + ", password: " + password + ", результат: " + expected, function() {
+                assert.equal(sign_up(user_name, e_mail, password), expected);
+            });
+        }
+        makeTest("user", "user@mail.ru", "User");
+
+    });
+
+    describe("Пустые поля", function() {
+
+        function makeTest(user_name, e_mail, password) {
+            var expected = 'Заполнены не все необходимые поля!';
+            it("Если хотя бы одно поле будет пустым при введении данных user_name: " + user_name + ", e_mail: " + e_mail + ", password: " + password + ", результат: " + expected, function() {
+                assert.equal(sign_up(user_name, e_mail, password), expected);
+            });
+        }
+        makeTest("user", "user@mail.ru", "");
+        makeTest("user", "", "User11111");
+        makeTest("user", "", "");
+
+    });
+
+});
+
+describe("Тестирование функции авторизации", function() {
+
+    describe("Ввести корректные данные", function() {
+
+        function makeTest(e_mail, password) {
+            var expected = 'Пользователь авторизован!';
+            it("При введении данных зарегистрированного пользователя e_mail: " + e_mail + ", password: " + password + ", результат: " + expected, function() {
+                assert.equal(log_in(e_mail, password), expected);
+            });
+        }
+        makeTest("mango@mail.ru", "mango99");
+    });
+
+    describe("Ввести некорректные данные", function() {
+
+        function makeTest(e_mail, password) {
+            var expected = 'E-mail или пароль введены неправильно!';
+            it("При введении данных зарегистрированного пользователя e_mail: " + e_mail + ", password: " + password + ", результат: " + expected, function() {
+                assert.equal(log_in(e_mail, password), expected);
+            });
+        }
+        makeTest("user@mail.ru", "mango99");
+        makeTest("mango@mail.ru", "User11111");
+        makeTest("user@mail.ru", "User11111");
+
+    });
+
+    describe("Пустые поля", function() {
+
+        function makeTest(e_mail, password) {
+            var expected = 'Заполнены не все необходимые поля!';
+            it("Если хотя бы одно поле будет пустым при введении данных e_mail: " + e_mail + ", password: " + password + ", результат: " + expected, function() {
+                assert.equal(log_in(e_mail, password), expected);
+            });
+        }
+        makeTest("user@mail.ru", "");
+        makeTest("", "User11111");
+        makeTest("", "");
+
+    });
+
+});
+
+describe("Тестирование функции перевода", function() {
+
+    describe("Ввести количество символов меньше 300", function() {
+
+        function makeTest(words) {
+            var expected = 'Перевод прошел успешно!';
+            it("При введении пользователем строкидлиной " + words.length + ": " + words + ", результат: " + expected, function() {
+                assert.equal(trans(words), expected);
+            });
+        }
+        str = [];
+        for (var i = 0; i < 8; i++) {
+            str.push('解');
+        }
+        makeTest(str);
+    });
+
+    describe("Ввести количество символов от 300 и выше", function() {
+
+        function makeTest(words) {
+            var expected = 'Количество символов не должно превышать 300 включительно!';
+            it("При введении пользователем строки длиной " + words.length + ": " + words + ", результат: " + expected, function() {
+                assert.equal(trans(words), expected);
+            });
+        }
+        var str = [];
+        for (var i = 0; i < 300; i++) {
+            str.push('解');
+        }
+        makeTest(str);
+
+        for (var i = 0; i < 5; i++) {
+            str.push('解');
+        }
+        makeTest(str);
+
     });
 
 });
