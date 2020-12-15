@@ -151,9 +151,19 @@
         padding-left: 10px;
         padding-right: 10px;
     }
+    
+    .name_user {
+        display: flex;
+        justify-content: flex-end;
+        height: 2.5em;
+        background-color: #D25959;
+    }
 </style>
 
 <body style="margin: auto;">
+    <div class="name_user">
+        <p id="user_n" style="color:#ffffff; justify-content: end; align-content: flex-end;" onload="set_usermame()"></p>
+    </div>
     <div class="main">
         <div class="left_block">
             <div class="left_block_text">
@@ -321,6 +331,23 @@
             //     ['瑞', 'ruì', 'I сущ.\n1) * скипетр (жаловался императором местным князьям); верительный знак полководца (в виде яшмовой пластинки)\n2) счастливое предзнаменование, благое знамение; счастливый, благоприятный; благовещий; благостный; чудесный\nII собств.\n1) геогр. (сокр. вм. 瑞典) Швеция; шведский\n2) геогр. (сокр. вм. 瑞士) Швейцария; швейцарский\n3) Жуй (фамилия)']
             // ];
 
+        }
+
+        function set_usermame() {
+            var user_n = document.getElementById('user_n')
+
+            var xhr = new XMLHttpRequest();
+            xhr.withCredentials = true;
+
+            xhr.open("GET", 'https://glacial-island-86307.herokuapp.com/get-name/', true);
+            xhr.send();
+            xhr.onreadystatechange = function() { // Ждём ответа от сервера
+                if (xhr.readyState == 4) { // Ответ пришёл
+                    if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
+                        user_n.innerHTML = xhr.responseText;
+                    }
+                }
+            };
         }
 
         function img_bkrs() {
