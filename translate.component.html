@@ -162,7 +162,7 @@
 
 <body style="margin: auto;">
     <div class="name_user">
-        <p id="user_n" style="color:#ffffff; justify-content: end; align-content: flex-end;" onload="set_usermame();"></p>
+        <p id="user_n" class="nickname" style="color:#ffffff; justify-content: end; align-content: flex-end;" onload="set_usermame();"></p>
     </div>
     <div class="main">
         <div class="left_block">
@@ -334,9 +334,9 @@
         }
 
         function set_usermame() {
-            var user_n = document.getElementsByTagName("p")['0'].textContent;
+            let user_n = document.querySelector('.nickname');
             console.log(user_n.length)
-            if (user_n.length == 0) {
+            if (user_n.length > 0) {} else {
                 var xhr = new XMLHttpRequest();
                 xhr.withCredentials = true;
 
@@ -346,7 +346,7 @@
                     if (xhr.readyState == 4) { // Ответ пришёл
                         if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
                             console.log("OK")
-                            user_n.innerHTML = xhr.responseText;
+                            user_n.textContent = xhr.responseText;
                         }
                     }
                 };
