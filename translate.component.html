@@ -267,8 +267,8 @@
                             } else if (flag_zhonga == 1) {
                                 zhonga_data = json1.zhonga;
                             }
-                            // console.log(bkrs_data)
-                            // console.log(zhonga_data)
+                            console.log(bkrs_data)
+                            console.log(zhonga_data)
                             console.log(bkrs_data);
                             var table = document.getElementById("table");
                             var rowCount = table.rows.length;
@@ -346,7 +346,7 @@
                     if (xhr.readyState == 4) { // Ответ пришёл
                         if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
                             console.log("OK")
-                            user_n.textContent = xhr.responseText;
+                            user_n.textContent = "Hello, " + xhr.responseText + "!";
                         }
                     }
                 };
