@@ -262,14 +262,15 @@
                             var data = xhr.responseText;
                             var json1 = JSON.parse(data);
                             if (flag_bkrs == 1) {
-                                console.log("Write in bkrs")
+                                console.log("Write in bkrs");
                                 bkrs_data = json1.bkrs;
-                            } else if (flag_zhonga == 1) {
+                            }
+                            if (flag_zhonga == 1) {
+                                console.log("Write in zhonga");
                                 zhonga_data = json1.zhonga;
                             }
-                            console.log(bkrs_data)
-                            console.log(zhonga_data)
                             console.log(bkrs_data);
+                            console.log(zhonga_data);
                             var table = document.getElementById("table");
                             var rowCount = table.rows.length;
                             for (var i = 0; i < rowCount; i++) {
