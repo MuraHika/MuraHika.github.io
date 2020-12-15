@@ -334,7 +334,7 @@
         }
 
         function set_usermame() {
-            var user_n = document.getElementById('user_n')
+            var user_n = document.getElementsByTagName("p")['0'].textContent;
             console.log(user_n)
             if (user_n == "") {
                 var xhr = new XMLHttpRequest();
