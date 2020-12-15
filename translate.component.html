@@ -335,20 +335,21 @@
 
         function set_usermame() {
             var user_n = document.getElementById('user_n')
+            if (user_n == "") {
+                var xhr = new XMLHttpRequest();
+                xhr.withCredentials = true;
 
-            var xhr = new XMLHttpRequest();
-            xhr.withCredentials = true;
-
-            xhr.open("GET", 'https://glacial-island-86307.herokuapp.com/get-name/', true);
-            xhr.send();
-            xhr.onreadystatechange = function() { // Ждём ответа от сервера
-                if (xhr.readyState == 4) { // Ответ пришёл
-                    if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
-                        console.log("OK")
-                        user_n.innerHTML = xhr.responseText;
+                xhr.open("GET", 'https://glacial-island-86307.herokuapp.com/get-name/', true);
+                xhr.send();
+                xhr.onreadystatechange = function() { // Ждём ответа от сервера
+                    if (xhr.readyState == 4) { // Ответ пришёл
+                        if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
+                            console.log("OK")
+                            user_n.innerHTML = xhr.responseText;
+                        }
                     }
-                }
-            };
+                };
+            }
             console.log("vivod")
         }
         window.onload = set_usermame;
