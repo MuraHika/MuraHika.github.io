@@ -344,10 +344,12 @@
             xhr.onreadystatechange = function() { // Ждём ответа от сервера
                 if (xhr.readyState == 4) { // Ответ пришёл
                     if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
+                        console.log("OK")
                         user_n.innerHTML = xhr.responseText;
                     }
                 }
             };
+            console.log("vivod")
         }
 
         function img_bkrs() {
