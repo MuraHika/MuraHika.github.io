@@ -190,7 +190,7 @@
 
                 xhr.open("POST", 'https://glacial-island-86307.herokuapp.com/login', true);
                 xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-                xhr.send(json);
+
                 xhr.onreadystatechange = function() { // Ждём ответа от сервера
                     if (xhr.readyState == 4) { // Ответ пришёл
                         if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
@@ -206,6 +206,7 @@
                         }
                     }
                 };
+                xhr.send(json);
             } else {
                 empty.innerHTML = 'Заполнены не все необходимые поля!';
             }

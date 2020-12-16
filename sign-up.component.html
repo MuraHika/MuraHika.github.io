@@ -187,7 +187,7 @@
 
                         xhr.open("POST", 'https://glacial-island-86307.herokuapp.com/register', true);
                         xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-                        xhr.send(json);
+
 
                         xhr.onreadystatechange = function() { // Ждём ответа от сервера
                             if (xhr.readyState == 4) { // Ответ пришёл
@@ -200,6 +200,7 @@
                                 }
                             }
                         };
+                        xhr.send(json);
                     } else {
                         empty.innerHTML = 'Пароль должен быть длиной не менее 6 символов и <p style="color:#D25959; justify-content: center; align-content: center;">содержать символы из a-z, A-Z, 0-9!</p>';
                     }
