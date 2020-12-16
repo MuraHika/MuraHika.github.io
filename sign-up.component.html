@@ -173,7 +173,7 @@
                 var password = document.getElementById('pass').value;
 
                 if (e_mail != "" && password != "") {
-                    if (password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*$/gi) == password && password.length >= 6) {
+                    if (password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*$/) == password && password.length >= 6) {
                         empty.innerHTML = '';
                         var xhr = new XMLHttpRequest();
                         xhr.withCredentials = true;
