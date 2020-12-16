@@ -383,7 +383,7 @@
                         if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
                             console.log("OK")
                             var name = xhr.responseText;
-                            user_n.textContent = "Hello, " + name + "!";
+                            user_n.textContent = "Hello, " + name.slice(1, name.length - 1) + "!";
                         }
                     }
                 };
