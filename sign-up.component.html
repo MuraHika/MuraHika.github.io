@@ -187,21 +187,19 @@
 
                         xhr.open("POST", 'https://glacial-island-86307.herokuapp.com/register', true);
                         xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+                        xhr.send(json);
 
                         xhr.onreadystatechange = function() { // Ждём ответа от сервера
                             if (xhr.readyState == 4) { // Ответ пришёл
                                 if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
                                     console.log("Added")
+                                    empty.innerHTML = 'Вы успешно зарегистрировались!';
                                     document.location.replace("https://murahika.github.io/translate.component.html");
                                 } else if (xhr.status == 403) {
                                     empty.innerHTML = 'Данный пользователь уже существует!';
                                 }
-                                console.log("What")
                             }
-                            console.log("Maybe")
                         };
-                        console.log("end")
-                        xhr.send(json);
                     } else {
                         empty.innerHTML = 'Пароль должен быть длиной не менее 6 символов и <p style="color:#D25959; justify-content: center; align-content: center;">содержать символы из a-z, A-Z, 0-9!</p>';
                     }
