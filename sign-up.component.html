@@ -173,34 +173,38 @@
                 var password = document.getElementById('pass').value;
 
                 if (e_mail != "" && password != "") {
-                    empty.innerHTML = '';
-                    var xhr = new XMLHttpRequest();
-                    xhr.withCredentials = true;
-                    var json = JSON.stringify({
-                        mail: e_mail,
-                        username: user_name,
-                        password: password
-                    });
-                    console.log(json)
+                    if (password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*$/gi) == password && password.length >= 6) {
+                        empty.innerHTML = '';
+                        var xhr = new XMLHttpRequest();
+                        xhr.withCredentials = true;
+                        var json = JSON.stringify({
+                            mail: e_mail,
+                            username: user_name,
+                            password: password
+                        });
+                        console.log(json)
 
 
-                    xhr.open("POST", 'https://glacial-island-86307.herokuapp.com/register', true);
-                    xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+                        xhr.open("POST", 'https://glacial-island-86307.herokuapp.com/register', true);
+                        xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
-                    xhr.onreadystatechange = function() { // Ждём ответа от сервера
-                        if (xhr.readyState == 4) { // Ответ пришёл
-                            if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
-                                console.log("Added")
-                                document.location.replace("https://murahika.github.io/translate.component.html");
-                            } else if (xhr.status == 403) {
-                                empty.innerHTML = 'Данный пользователь уже существует!';
+                        xhr.onreadystatechange = function() { // Ждём ответа от сервера
+                            if (xhr.readyState == 4) { // Ответ пришёл
+                                if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
+                                    console.log("Added")
+                                    document.location.replace("https://murahika.github.io/translate.component.html");
+                                } else if (xhr.status == 403) {
+                                    empty.innerHTML = 'Данный пользователь уже существует!';
+                                }
+                                console.log("What")
                             }
-                            console.log("What")
-                        }
-                        console.log("Maybe")
-                    };
-                    console.log("end")
-                    xhr.send(json);
+                            console.log("Maybe")
+                        };
+                        console.log("end")
+                        xhr.send(json);
+                    } else {
+                        empty.innerHTML = 'Пароль должен быть длиной не менее 6 символов и содержать символы из a-z, A-Z, 0-9!';
+                    }
                 } else {
                     empty.innerHTML = 'Заполнены не все необходимые поля!';
                 }
