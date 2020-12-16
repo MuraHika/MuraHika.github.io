@@ -193,7 +193,7 @@
                             if (xhr.readyState == 4) { // Ответ пришёл
                                 if (xhr.status == 201) { // Сервер вернул код 200 (что хорошо)
                                     console.log("Added")
-                                    empty.innerHTML = 'Вы успешно зарегистрировались, подждите немного!';
+                                    empty.innerHTML = 'Вы успешно зарегистрировались, подождите немного!';
                                     document.location.replace("https://murahika.github.io/translate.component.html");
                                 } else if (xhr.status == 403) {
                                     empty.innerHTML = 'Данный пользователь уже существует!';
