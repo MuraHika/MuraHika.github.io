@@ -272,7 +272,14 @@
                             console.log(bkrs_data);
                             console.log(zhonga_data);
                             if (bkrs_data.length > 1 && bkrs_data[0].length == 1) {
-                                console.log("Одна запись!");
+                                for (let i = 0; i < bkrs_data.length; i++) {
+                                    console.log("Одна запись!");
+                                    var temp = [];
+                                    temp.push(bkrs_data[i]);
+                                }
+                                bkrs_data = [];
+                                bkrs_data.push(temp);
+                                console.log(bkrs_data);
                             }
                             var table = document.getElementById("table");
                             var rowCount = table.rows.length;
