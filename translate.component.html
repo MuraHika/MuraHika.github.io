@@ -271,6 +271,9 @@
                             }
                             console.log(bkrs_data);
                             console.log(zhonga_data);
+                            if (bkrs_data.length > 1 && bkrs_data[0].length == 1) {
+                                console.log("Одна запись!");
+                            }
                             var table = document.getElementById("table");
                             var rowCount = table.rows.length;
                             for (var i = 0; i < rowCount; i++) {
