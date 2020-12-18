@@ -271,25 +271,29 @@
                             }
                             console.log(bkrs_data);
                             console.log(zhonga_data);
-                            if (bkrs_data.length > 1 && bkrs_data[0].length == 1) {
-                                var temp = [];
-                                for (let i = 0; i < bkrs_data.length; i++) {
-                                    console.log("Одна запись!");
-                                    temp.push(bkrs_data[i]);
+                            if (bkrs_data != undefined) {
+                                if (bkrs_data.length > 1 && bkrs_data[0].length == 1) {
+                                    var temp = [];
+                                    for (let i = 0; i < bkrs_data.length; i++) {
+                                        console.log("Одна запись!");
+                                        temp.push(bkrs_data[i]);
+                                    }
+                                    bkrs_data = [];
+                                    bkrs_data.push(temp);
+                                    console.log(bkrs_data);
                                 }
-                                bkrs_data = [];
-                                bkrs_data.push(temp);
-                                console.log(bkrs_data);
                             }
-                            if (zhonga_data.length > 1 && zhonga_data[0].length == 1) {
-                                var temp = [];
-                                for (let i = 0; i < zhonga_data.length; i++) {
-                                    console.log("Одна запись!");
-                                    temp.push(zhonga_data[i]);
+                            if (zhonga_data != undefined) {
+                                if (zhonga_data.length > 1 && zhonga_data[0].length == 1) {
+                                    var temp = [];
+                                    for (let i = 0; i < zhonga_data.length; i++) {
+                                        console.log("Одна запись!");
+                                        temp.push(zhonga_data[i]);
+                                    }
+                                    zhonga_data = [];
+                                    zhonga_data.push(temp);
+                                    console.log(zhonga_data);
                                 }
-                                zhonga_data = [];
-                                zhonga_data.push(temp);
-                                console.log(zhonga_data);
                             }
                             var table = document.getElementById("table");
                             var rowCount = table.rows.length;
