@@ -64,12 +64,35 @@
             return empty;
         }
 
-        function trans(words) {
+        function trans(words, flag, translate) {
             var empty = "";
             var size = words.length;
             console.log(words.length)
             if (size < 300) {
-                empty = 'Перевод прошел успешно!';
+                if (flag == 'bkrs') {
+                    for (let i = 0; i < words.length; i++) {
+                        if (words[i] == translate[i][0]) {
+                            empty += translate[i][0] + ': (' + translate[i][1] + ' - ' + translate[i][2] + ')'
+                        }
+                        if (words.length > 1 && i != words.length - 1) {
+                            empty += ' + '
+                        }
+                    }
+
+                } else if (flag == 'zhonga') {
+                    for (let i = 0; i < words.length; i++) {
+                        if (words[i] == translate[i][0]) {
+                            empty += translate[i][0] + ': (' + translate[i][1] + ' - ' + translate[i][2] + ')'
+                        }
+                        if (words.length > 1 && i != words.length - 1) {
+                            empty += ' + '
+                        }
+                    }
+
+                } else {
+
+                    empty = 'Перевод прошел успешно!';
+                }
             } else {
                 empty = 'Количество символов не должно превышать 300 включительно!';
             }

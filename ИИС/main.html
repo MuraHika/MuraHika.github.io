@@ -1,0 +1,584 @@
+<html>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+    .main {
+        /* height: 800px; */
+        display: flex;
+        /* flex-grow: 2; */
+        flex-direction: column;
+        align-items: stretch;
+        margin-left: 3em;
+    }
+    
+    .manga_type {
+        display: flex;
+        flex-direction: column;
+        margin-top: 1em;
+        height: 7em;
+        width: 57em;
+        background: #EFF5F7;
+        box-shadow: 0px 0px 10px rgba(102, 117, 128, 0.25);
+        border-radius: 15px;
+        padding-left: 2em;
+        padding-top: 1em;
+    }
+    
+    .manga_genre {
+        display: flex;
+        flex-direction: column;
+        margin-top: 2em;
+        height: 25em;
+        width: 77em;
+        background: #EFF5F7;
+        box-shadow: 0px 0px 10px rgba(102, 117, 128, 0.25);
+        border-radius: 15px;
+        padding-left: 2em;
+        padding-top: 1em;
+        /* background-size: 100%; */
+    }
+    
+    .manga_type_row {
+        display: flex;
+        flex-direction: row;
+        margin-top: 1.5em;
+    }
+    
+    .manga_genre_col {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .manga_genre_row {
+        display: flex;
+        flex-direction: row;
+        margin-top: 0.5em;
+    }
+    
+    p {
+        font-family: 'Open Sans', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        color: #000000;
+        margin: auto;
+        font-size: 115%;
+    }
+    
+    .manga_genre_check {
+        width: 18px;
+        height: 18px;
+        margin-right: 0.7em;
+        /* margin-top: 0.25em; */
+    }
+    
+    .manga_type_check {
+        width: 18px;
+        height: 18px;
+        margin-right: 0.5em;
+        margin-top: 0.25em;
+    }
+    
+    .manga_type_row_div {
+        display: flex;
+        flex-direction: row;
+        margin-right: 3em;
+    }
+    
+    .manga_genre_row_div {
+        display: flex;
+        flex-direction: row;
+        margin-right: 3em;
+        margin-top: 1em;
+    }
+    
+    .button {
+        background: #414C5C;
+        border-radius: 7px;
+        width: 10em;
+        height: 2.5em;
+        margin-top: 2em;
+    }
+    
+    p.left_block_button_text {
+        color: #ffffff;
+        margin: auto;
+        font-size: 100%;
+        margin-top: 0.5em;
+        margin-left: 33%;
+        margin-right: 50%;
+    }
+    
+    p.title {
+        font-size: 150%;
+    }
+    
+    .rezult {
+        margin-top: 2em;
+    }
+</style>
+
+<body style="margin: auto;">
+
+
+    <div class="main" role="main">
+
+        <div class="manga_type">
+            <div>
+                <p class="title">Выберите тип</p>
+            </div>
+            <div class="manga_type_row">
+                <div class="manga_type_row_div">
+                    <input type="radio" class="manga_type_check" id="Манга" name="manga_check" checked onClick="img_check_type();">
+                    <!-- <img id="manga" class="manga_type_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                    <p> Манга</p>
+                </div>
+
+                <div class="manga_type_row_div">
+                    <input type="radio" class="manga_type_check" id="Манхва" name="manga_check" onClick="img_check_type();">
+                    <!-- <img id="manhwa" class="manga_type_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                    <p> Манхва</p>
+                </div>
+
+                <div class="manga_type_row_div">
+                    <input type="radio" class="manga_type_check" id="Маньхуа" name="manga_check" onClick="img_check_type();">
+                    <!-- <img id="manhua" class="manga_type_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                    <p> Маньхуа</p>
+                </div>
+
+                <div class="manga_type_row_div">
+                    <input type="radio" class="manga_type_check" id="Сингл" name="manga_check" onClick="img_check_type();">
+                    <!-- <img id="single" class="manga_type_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                    <p> Сингл</p>
+                </div>
+
+                <div class="manga_type_row_div">
+                    <input type="radio" class="manga_type_check" id="Комикс" name="manga_check" onClick="img_check_type();">
+                    <!-- <img id="comics" class="manga_type_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                    <p> Комикс</p>
+                </div>
+
+                <div class="manga_type_row_div">
+                    <input type="radio" class="manga_type_check" id="Руманга" name="manga_check" onClick="img_check_type();">
+                    <!-- <img id="rumanga" class="manga_type_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                    <p> Руманга</p>
+                </div>
+            </div>
+        </div>
+        <div class="manga_genre">
+            <div>
+                <p class="title">Выберите жанры</p>
+            </div>
+            <div class="manga_genre_col">
+                <div class="manga_genre_row">
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Арт" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="art" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Арт</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Бара" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="bara" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Бара</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Боевик" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="boev" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Боевик</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Боевые искусства" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="boev_iss" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Боевые искусства</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Вампиры" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="vamp" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Вампиры</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Гарем" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="garem" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Гарем</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Гендерная интрига" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="gend_int" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Гендерная интрига</p>
+                    </div>
+                </div>
+                <div class="manga_genre_row">
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Героическое фентези" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="fentesy" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Героическое фентези</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Детектив" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="detect" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Детектив</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Дзёсэй" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="djesei" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Дзёсэй</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Додзинси" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="dj" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Додзинси</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Драма" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="drama" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Драма</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Игра" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="igra" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Игра</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="История" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="history" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> История</p>
+                    </div>
+                </div>
+                <div class="manga_genre_row">
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Киберпанк" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="cyber" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Киберпанк</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Кодомо" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="codomo" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Кодомо</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Комедия" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="camedy" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Комедия</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Махо-сёдзё" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="maho_sheje" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Махо-сёдзё</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Меха" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="meha" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Меха</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Научная фантастика" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="fantastic" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Научная фантастика</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Омегаверс" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="omegavers" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p>Омегаверс</p>
+                    </div>
+                </div>
+                <div class="manga_genre_row">
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Повседневность" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="povsedn" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Повседневность</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Постапокалиптика" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="postapoc" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Постапокалиптика</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Приключения" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="adventure" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Приключения</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Психология" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="psyhology" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Психология</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Романтика" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="romantic" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Романтика</p>
+                    </div>
+                </div>
+                <div class="manga_genre_row">
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Самурайский боевик" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="samurai" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Самурайский боевик</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Сверхъестественное" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="supernatural" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Сверхъестественное</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Сёдзё" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="sedje" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Сёдзё</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Сёдзё-ай" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="sedje_ai" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Сёдзё-ай</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Сёнэн" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="senen" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Сёнэн</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Сёнэн-ай" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="senen_ai" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Сёнэн-ай</p>
+                    </div>
+                </div>
+                <div class="manga_genre_row">
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Спорт" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="sport" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Спорт</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Сэйнэн" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="seinen" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Сэйнэн</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Трагедия" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="tragedy" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Трагедия</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Триллер" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="triller" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Триллер</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Ужасы" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="horror" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Ужасы</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Фэнтези" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="fentesy" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Фэнтези</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Школа" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="school" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Школа</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Эротика" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="erotic" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p>Эротика</p>
+                    </div>
+
+                </div>
+                <div class="manga_genre_row">
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Этти" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="etti" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p>Этти</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Юри" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="yuri" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p>Юри</p>
+                    </div>
+
+                    <div class="manga_genre_row_div">
+                        <input type="checkbox" id="Яой" class="manga_genre_check" onClick="img_check();" />
+                        <!-- <img id="yaoi" class="manga_genre_check" src="./res/uncheked.png" onClick="img_check();"> -->
+                        <p> Яой</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="button">
+            <a class="left_block_button" onclick="analyze()">
+                <p class="left_block_button_text">Анализ</p>
+            </a>
+        </div>
+        <div class="rezult">
+            <p>Нет результата</p>
+        </div>
+
+    </div>
+    <script async language="JavaScript">
+        let type_manga = 0
+        let type_manhwa = 0
+        let type_manhua = 0
+        let type_single = 0
+        let type_comics = 0
+        let type_rumanga = 0
+
+        let genre_art = 0
+        let genre_boev = 0
+        let genre_boev_iss = 0
+        let genre_vamp = 0
+        let genre_garem = 0
+        let genre_gend_intr = 0
+        let genre_ger_fent = 0
+        let genre_detect = 0
+        let genre_djesei = 0
+        let genre_drama = 0
+        let genre_dj = 0
+        let genre_igra = 0
+        let genre_history = 0
+        let genre_cyber = 0
+        let genre_codomo = 0
+        let genre_camedy = 0
+        let genre_maho_sheje = 0
+        let genre_meha = 0
+        let genre_fantastic = 0
+        let genre_povsedn = 0
+        let genre_postapoc = 0
+        let genre_adventure = 0
+        let genre_psyhology = 0
+        let genre_romantic = 0
+        let genre_samurai = 0
+        let genre_supernatural = 0
+        let genre_sedje = 0
+        let genre_sedje_ai = 0
+        let genre_senen = 0
+        let genre_senen_ai = 0
+        let genre_sport = 0
+        let genre_seinen = 0
+        let genre_tragedy = 0
+        let genre_triller = 0
+        let genre_horror = 0
+        let genre_fentesy = 0
+        let genre_school = 0
+        let genre_atty = 0
+        let genre_yuri = 0
+
+        var dict_type = {
+            "Манга": 'False',
+            "Манхва": 'False',
+            "Маньхуа": 'False',
+            "Сингл": 'False',
+            "Комикс": 'False',
+            "Руманга": 'False'
+        };
+        var dict_genre = {
+            "Арт": 'False',
+            "Бара": 'False',
+            "Боевик": 'False',
+            "Боевые искусства": 'False',
+            "Вампиры": 'False',
+            "Гарем": 'False',
+            "Гендерная интрига": 'False',
+            "Героическое фентези": 'False',
+            "Детектив": 'False',
+            "Дзёсэй": 'False',
+            "Додзинси": 'False',
+            "Драма": 'False',
+            "Игра": 'False',
+            "История": 'False',
+            "Киберпанк": 'False',
+            "Кодомо": 'False',
+            "Комедия": 'False',
+            "Махо-сёдзё": 'False',
+            "Меха": 'False',
+            "Научная фантастика": 'False',
+            "Омегаверс": 'False',
+            "Повседневность": 'False',
+            "Постапокалиптика": 'False',
+            "Приключения": 'False',
+            "Психология": 'False',
+            "Романтика": 'False',
+            "Самурайский боевик": 'False',
+            "Сверхъестественное": 'False',
+            "Сёдзё": 'False',
+            "Сёдзё-ай": 'False',
+            "Сёнэн": 'False',
+            "Сёнэн-ай": 'False',
+            "Спорт": 'False',
+            "Сэйнэн": 'False',
+            "Трагедия": 'False',
+            "Триллер": 'False',
+            "Ужасы": 'False',
+            "Фэнтези": 'False',
+            "Школа": 'False',
+            "Эротика": 'False',
+            "Этти": 'False',
+            "Юри": 'False',
+            "Яой": 'False'
+        };
+
+        function img_check() {
+            // var chkd = document.querySelectorAll('input:checked');
+            // for (var i = 0; i < chkd.length; i++) {
+            //     if (chkd[i].getAttribute("name") != "manga_check") {
+            //         // console.log(chkd);
+            //         console.log(chkd[i].getAttribute("id"));
+            //     }
+            // }
+        }
+
+        function img_check_type() {
+
+        }
+
+        function analyze() {
+            var chkd = document.querySelectorAll('input:checked');
+            for (var i = 0; i < chkd.length; i++) {
+                if (chkd[i].getAttribute("name") != "manga_check") {
+                    // console.log(chkd);
+                    var name = chkd[i].getAttribute("id");
+                    dict_genre[name] = 'True';
+                    console.log(dict_genre);
+                } else if (chkd[i].getAttribute("name") == "manga_check") {
+                    var name = chkd[i].getAttribute("id");
+                    dict_type[name] = 'True';
+                    console.log(dict_type);
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -102,7 +102,7 @@ describe("Тестирование функции перевода", function() 
         function makeTest(words) {
             var expected = 'Перевод прошел успешно!';
             it("При введении пользователем строкидлиной " + words.length + ": " + words + ", результат: " + expected, function() {
-                assert.equal(trans(words), expected);
+                assert.equal(trans(words, '', ''), expected);
             });
         }
         str = [];
@@ -117,7 +117,7 @@ describe("Тестирование функции перевода", function() 
         function makeTest(words) {
             var expected = 'Количество символов не должно превышать 300 включительно!';
             it("При введении пользователем строки длиной " + words.length + ": " + words + ", результат: " + expected, function() {
-                assert.equal(trans(words), expected);
+                assert.equal(trans(words, '', ''), expected);
             });
         }
         var str = [];
@@ -130,6 +130,45 @@ describe("Тестирование функции перевода", function() 
             str.push('解');
         }
         makeTest(str);
+
+    });
+
+    describe("Проверка на соответствие перевода словаря bkrs", function() {
+
+        function makeTest(words, flag, translate) {
+            var expected = '有意见: (yǒu yìjiàn - иметь другое мнение, иметь претензии, возражать)';
+            it("При введении пользователем строки: " + words + ", результат: " + expected, function() {
+                assert.equal(trans(words, flag, translate), expected);
+            });
+        }
+
+        var str = [];
+        str.push('有意见');
+
+        makeTest(str, 'bkrs', [
+            ['有意见', 'yǒu yìjiàn', 'иметь другое мнение, иметь претензии, возражать']
+
+        ]);
+
+
+    });
+
+    describe("Проверка на соответствие перевода словаря zhonga", function() {
+
+        function makeTest(words, flag, translate) {
+            var expected = '有: (yǒu; yòu - 1) обладать, иметь; у (кого-то) есть (то-то); быть владельцем (хозяином, чего-л.)) + 意见: (yìjian - 1) мнения, взгляды, воззрения; подход)';
+            it("При введении пользователем строки: " + words + ", результат: " + expected, function() {
+                assert.equal(trans(words, flag, translate), expected);
+            });
+        }
+        var str = [];
+        str.push('有');
+        str.push('意见');
+
+        makeTest(str, 'zhonga', [
+            ['有', 'yǒu; yòu', '1) обладать, иметь; у (кого-то) есть (то-то); быть владельцем (хозяином, чего-л.)'],
+            ['意见', 'yìjian', '1) мнения, взгляды, воззрения; подход']
+        ]);
 
     });
 
