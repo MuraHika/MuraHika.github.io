@@ -7,7 +7,7 @@
         align-items: stretch;
     }
     
-    .left_block {
+    .left-block {
         display: flex;
         flex-grow: 1;
         margin: auto;
@@ -18,7 +18,7 @@
         justify-content: flex-start;
     }
     
-    .right_block {
+    .right-block {
         display: flex;
         margin: auto;
         flex-grow: 1;
@@ -36,7 +36,7 @@
         font-weight: 400;
     }
     
-    .left_block_text {
+    .left-block__text {
         font-family: 'Open Sans', sans-serif;
         font-style: normal;
         font-size: 25px;
@@ -44,7 +44,7 @@
         color: #000000;
     }
     
-    .left_block_input {
+    .left-block__input {
         display: flex;
         font-size: 15px;
         background: #F7F8FB;
@@ -56,7 +56,7 @@
         border-radius: 12px;
     }
     
-    .left_block_button {
+    .left-block__button {
         display: flex;
         background: #D25959;
         width: 15em;
@@ -64,7 +64,7 @@
         border-radius: 10px;
     }
     
-    .left_block_button_text {
+    .left-block__button__text {
         font-family: 'Open Sans', sans-serif;
         font-style: normal;
         font-size: 15px;
@@ -72,7 +72,7 @@
         color: #FFFFFF;
     }
     
-    .right_block_dict {
+    .right-block__dict {
         display: flex;
         flex-grow: 1;
         flex-basis: 0;
@@ -80,7 +80,7 @@
         justify-content: flex-start;
     }
     
-    .right_block_form_dict_row {
+    .right-block__form-dict-row {
         display: flex;
         flex-grow: 1;
         flex-basis: 0;
@@ -89,13 +89,13 @@
         justify-content: flex-start;
     }
     
-    .right_block_switch {
+    .right-block__switch {
         display: flex;
         width: 70px;
         height: 45px;
     }
     
-    .right_block_text {
+    .right-block__text {
         font-family: 'Open Sans', sans-serif;
         font-style: normal;
         font-size: 25px;
@@ -105,13 +105,13 @@
         color: #000000;
     }
     
-    .right_block_info_icon {
+    .right-block__info-icon {
         display: flex;
         width: "30px";
         height: "30px";
     }
     
-    .right_block_button {
+    .right-block__button {
         display: flex;
         flex-grow: 1;
         flex-basis: 0;
@@ -123,7 +123,7 @@
         border-radius: 10px;
     }
     
-    .right_block_button_text {
+    .right-block__button__text {
         font-family: 'Open Sans', sans-serif;
         font-style: normal;
         font-weight: normal;
@@ -132,7 +132,7 @@
         color: #FFFFFF;
     }
     
-    .table_bkrs {
+    .table-bkrs {
         border-collapse: collapse;
         text-align: left;
         white-space: normal;
@@ -152,7 +152,7 @@
         padding-right: 10px;
     }
     
-    .name_user {
+    .name-user {
         display: flex;
         justify-content: flex-end;
         height: 2.5em;
@@ -161,55 +161,54 @@
 </style>
 
 <body style="margin: auto;">
-    <div class="name_user">
+    <div class="name-user">
         <p id="user_n" class="nickname" style="color:#ffffff; justify-content: end; align-content: flex-end; margin-right: 2em;" onload="set_usermame();"></p>
     </div>
     <div class="main">
-        <div class="left_block">
-            <div class="left_block_text">
+        <div class="left-block">
+            <div class="left-block__text">
                 <p>Введите текст</p>
             </div>
             <div>
-                <textarea id="words" rows="10" cols="45" name="china_text" class="left_block_input" autofocus></textarea>
+                <textarea id="words" rows="10" cols="45" name="china_text" class="left-block__input" autofocus></textarea>
             </div>
-            <div class="left_block_text">
+            <!-- <div class="left-block__text">
                 <p>Распознать иероглифы с картинки</p>
             </div>
             <div>
-                <!-- <input type="file" onchange="transl(this)"> -->
-                <a class="left_block_button">
-                    <p class="left_block_button_text">Загрузить</p>
+                <a class="left-block__button">
+                    <p class="left-block__button__text">Загрузить</p>
                 </a>
-            </div>
+            </div> -->
         </div>
-        <div class="right_block">
-            <div class="right_block_dict">
-                <div class="right_block_form_dict_row">
+        <div class="right-block">
+            <div class="right-block__dict">
+                <div class="right-block__form-dict-row">
                     <div>
-                        <img id="bkrs" class="right_block_switch" src="./images/switch_on.png" onClick="img_bkrs();">
+                        <img id="bkrs" class="right-block__switch" src="./images/switch_on.png" onClick="img_bkrs();">
                     </div>
-                    <div class="right_block_text">
+                    <div class="right-block__text">
                         <p>Словарь BKRS</p>
                     </div>
                     <div>
-                        <img class="right_block_info_icon" src="./images/info.png">
+                        <img class="right-block__info-icon" src="./images/info.png">
                     </div>
                 </div>
-                <div class="right_block_form_dict_row">
+                <div class="right-block__form-dict-row">
                     <div>
                         <img id="zhonga" class="right_block_switch" src="./images/switch_off.png" onClick="img_zhonga();">
                     </div>
-                    <div class="right_block_text">
+                    <div class="right-block__text">
                         <p>Словарь Zhonga</p>
                     </div>
                     <div>
-                        <img class="right_block_info_icon" src="./images/info.png">
+                        <img class="right-block__info-icon" src="./images/info.png">
                     </div>
                 </div>
             </div>
             <div>
-                <a class="right_block_button" onclick="transl()">
-                    <p class="right_block_button_text">Перевести</p>
+                <a class="right-block__button" onclick="transl()">
+                    <p class="right-block__button-text">Перевести</p>
                 </a>
             </div>
         </div>
@@ -218,7 +217,7 @@
         <p id="empty" style="color:#D25959; justify-content: center; align-content: center;"></p>
     </div>
     <div style="position: absolute;left: 50%; margin-left: -500px; margin-top: 5em;">
-        <table id="table" class="table_bkrs" style="width: 1000px; margin-bottom: 5em;">
+        <table id="table" class="table-bkrs" style="width: 1000px; margin-bottom: 5em;">
 
         </table>
     </div>

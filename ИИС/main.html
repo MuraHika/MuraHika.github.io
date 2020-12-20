@@ -444,56 +444,12 @@
         <div class="rezult">
             <p>Нет результата</p>
         </div>
+        <div id="image" style="display: flex; flex-direction: column;">
+            <!-- <img id="myImg" alt="your image" height=200 width=100> -->
+        </div>
 
     </div>
     <script async language="JavaScript">
-        let type_manga = 0
-        let type_manhwa = 0
-        let type_manhua = 0
-        let type_single = 0
-        let type_comics = 0
-        let type_rumanga = 0
-
-        let genre_art = 0
-        let genre_boev = 0
-        let genre_boev_iss = 0
-        let genre_vamp = 0
-        let genre_garem = 0
-        let genre_gend_intr = 0
-        let genre_ger_fent = 0
-        let genre_detect = 0
-        let genre_djesei = 0
-        let genre_drama = 0
-        let genre_dj = 0
-        let genre_igra = 0
-        let genre_history = 0
-        let genre_cyber = 0
-        let genre_codomo = 0
-        let genre_camedy = 0
-        let genre_maho_sheje = 0
-        let genre_meha = 0
-        let genre_fantastic = 0
-        let genre_povsedn = 0
-        let genre_postapoc = 0
-        let genre_adventure = 0
-        let genre_psyhology = 0
-        let genre_romantic = 0
-        let genre_samurai = 0
-        let genre_supernatural = 0
-        let genre_sedje = 0
-        let genre_sedje_ai = 0
-        let genre_senen = 0
-        let genre_senen_ai = 0
-        let genre_sport = 0
-        let genre_seinen = 0
-        let genre_tragedy = 0
-        let genre_triller = 0
-        let genre_horror = 0
-        let genre_fentesy = 0
-        let genre_school = 0
-        let genre_atty = 0
-        let genre_yuri = 0
-
         var dict_type = {
             "Манга": 'False',
             "Манхва": 'False',
@@ -576,6 +532,85 @@
                     console.log(dict_type);
                 }
             }
+
+            var xhr = new XMLHttpRequest();
+            xhr.withCredentials = true;
+            var json = JSON.stringify({
+                "Манга": dict_type['Манга'],
+                "Манхва": dict_type['Манхва'],
+                "Маньхуа": dict_type['Маньхуа'],
+                "Сингл": dict_type['Сингл'],
+                "Комикс": dict_type['Комикс'],
+                "Руманга": dict_type['Руманга'],
+                "Арт": dict_genre['Арт'],
+                "Бара": dict_genre['Бара'],
+                "Боевик": dict_genre['Боевик'],
+                "Боевые искусства": dict_genre['Боевые искусства'],
+                "Вампиры": dict_genre['Вампиры'],
+                "Гарем": dict_genre['Гарем'],
+                "Гендерная интрига": dict_genre['Гендерная интрига'],
+                "Героическое фентези": dict_genre['Героическое фентези'],
+                "Детектив": dict_genre['Детектив'],
+                "Дзёсэй": dict_genre['Дзёсэй'],
+                "Додзинси": dict_genre['Додзинси'],
+                "Драма": dict_genre['Драма'],
+                "Игра": dict_genre['Игра'],
+                "История": dict_genre['История'],
+                "Киберпанк": dict_genre['Киберпанк'],
+                "Кодомо": dict_genre['Кодомо'],
+                "Комедия": dict_genre['Комедия'],
+                "Махо-сёдзё": dict_genre['Махо-сёдзё'],
+                "Меха": dict_genre['Меха'],
+                "Научная фантастика": dict_genre['Научная фантастика'],
+                "Омегаверс": dict_genre['Омегаверс'],
+                "Повседневность": dict_genre['Повседневность'],
+                "Постапокалиптика": dict_genre['Постапокалиптика'],
+                "Приключения": dict_genre['Приключения'],
+                "Психология": dict_genre['Психология'],
+                "Романтика": dict_genre['Романтика'],
+                "Самурайский боевик": dict_genre['Самурайский боевик'],
+                "Сверхъестественное": dict_genre['Сверхъестественное'],
+                "Сёдзё": dict_genre['Сёдзё'],
+                "Сёдзё-ай": dict_genre['Сёдзё-ай'],
+                "Сёнэн": dict_genre['Сёнэн'],
+                "Сёнэн-ай": dict_genre['Сёнэн-ай'],
+                "Спорт": dict_genre['Спорт'],
+                "Сэйнэн": dict_genre['Сэйнэн'],
+                "Трагедия": dict_genre['Трагедия'],
+                "Триллер": dict_genre['Триллер'],
+                "Ужасы": dict_genre['Ужасы'],
+                "Фэнтези": dict_genre['Фэнтези'],
+                "Школа": dict_genre['Школа'],
+                "Эротика": dict_genre['Эротика'],
+                "Этти": dict_genre['Этти'],
+                "Юри": dict_genre['Юри'],
+                "Яой": dict_genre['Яой']
+            });
+            console.log(json)
+
+
+            xhr.open("POST", 'https://glacial-island-86307.herokuapp.com/register', true);
+            xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+
+
+            xhr.onreadystatechange = function() { // Ждём ответа от сервера
+                if (xhr.readyState == 4) { // Ответ пришёл
+                    if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
+
+                    }
+                }
+            };
+            xhr.send(json);
+            var empty = document.getElementById('image')
+            for (let index = 0; index < 3; index++) {
+                empty.innerHTML += "<img id='myImg' alt='your image' src='O:\\University\\4курс\\КПО\\курсовая\\MuraHika.github.io\\images\\info.png' height=200 width=100>"
+
+            }
+
+            var img = document.querySelector('img');
+            // img.src = URL.createObjectURL(this.files[0]);
+            // img.src = "O:\\University\\4курс\\КПО\\курсовая\\MuraHika.github.io\\images\\info.png";
+            // img.onload = imageIsLoaded;
         }
     </script>
 

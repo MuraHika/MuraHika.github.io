@@ -7,7 +7,7 @@
         align-items: stretch;
     }
     
-    .left_block {
+    .left-block {
         margin: auto;
         width: 50%;
         height: 43em;
@@ -18,7 +18,7 @@
         background-image: url("./images/image_block.jpg");
     }
     
-    .right_block {
+    .right-block {
         display: flex;
         margin: auto;
         width: 50%;
@@ -37,17 +37,17 @@
         margin: auto;
     }
     
-    .left_block_title {
+    .left-block__title {
         margin-left: 20%;
         margin-top: 0;
         font-size: 350%;
     }
     
-    p.left_block_button_text {
+    p.left-block__button__text {
         font-size: 150%;
     }
     
-    .right_block_title {
+    .right-block__title {
         display: flex;
         margin: auto;
         margin-top: 0em;
@@ -56,20 +56,20 @@
         font-weight: 400;
     }
     
-    p.right_block_text {
+    p.right-block__text {
         font-size: 200%;
         color: #000000;
         font-weight: normal;
         display: block
     }
     
-    p.right_block_button_text {
+    p.right-block__button__text {
         display: flex;
         font-size: 150%;
         color: #FFFFFF;
     }
     
-    .left_block_button {
+    .left-block__button {
         display: flex;
         width: 25em;
         height: 4em;
@@ -79,7 +79,7 @@
         border-radius: 54.5px;
     }
     
-    .right_block_input {
+    .right-block__input {
         margin: auto;
         margin-right: auto;
         font-size: 20px;
@@ -93,7 +93,7 @@
         border-radius: 12px;
     }
     
-    .right_block_button {
+    .right-block__button {
         display: flex;
         align-content: center;
         width: 13em;
@@ -109,47 +109,47 @@
 
     <div class="main" role="main">
 
-        <div class="left_block">
+        <div class="left-block">
 
-            <div class="left_block_title">
+            <div class="left-block__title">
                 <p>Уже есть в нашей системе?</p>
             </div>
             <div style="display: flex; margin-top: 5em;">
-                <a class="left_block_button" href="https://murahika.github.io/log-in.component.html" style="text-decoration: none;">
-                    <p class="left_block_button_text"> Войти </p>
+                <a class="left-block__button" href="https://murahika.github.io/log-in.component.html" style="text-decoration: none;">
+                    <p class="left-block__button__text"> Войти </p>
                 </a>
             </div>
         </div>
 
-        <div class="right_block">
+        <div class="right-block">
 
             <div style="align-self: center; ">
-                <p class="right_block_title">Создайте свой аккаунт</p>
+                <p class="right-block__title">Создайте свой аккаунт</p>
             </div>
 
             <div style=" align-self: center; margin-top: 3em;">
 
                 <div style="align-self: flex-start;">
-                    <p class="right_block_text">Имя</p>
+                    <p class="right-block__text">Имя</p>
                 </div>
 
                 <div>
-                    <input type="text" class="right_block_input" name="user_name" id="name">
+                    <input type="text" class="right-block__input" name="user-name" id="name">
                 </div>
 
                 <div style="align-self: flex-start; margin-top: 2em;">
-                    <p class="right_block_text">E-mail</p>
+                    <p class="right-block__text">E-mail</p>
                 </div>
 
                 <div>
-                    <input type="text" class="right_block_input" name="e_mail" id="mail">
+                    <input type="text" class="right-block__input" name="e-mail" id="mail">
                 </div>
 
                 <div style="align-self: flex-start; margin-top: 2em;">
-                    <p class="right_block_text">Пароль</p>
+                    <p class="right-block__text">Пароль</p>
                 </div>
                 <div>
-                    <input type="password" class="right_block_input" name="password" id="pass">
+                    <input type="password" class="right-block__nput" name="password" id="pass">
                 </div>
 
                 <div>
@@ -158,8 +158,8 @@
             </div>
 
             <div style="display: flex; margin-top: 3em; align-self: center; ">
-                <a class="right_block_button" onclick="sign_up()">
-                    <p class="right_block_button_text">Создать</p>
+                <a class="right-block__button" onclick="sign_up()">
+                    <p class="right-block__button__text">Создать</p>
                 </a>
             </div>
         </div>

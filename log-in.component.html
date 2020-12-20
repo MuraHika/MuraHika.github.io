@@ -7,7 +7,7 @@
         align-items: stretch;
     }
     
-    .left_block {
+    .left-block {
         display: flex;
         margin: auto;
         width: 50%;
@@ -18,7 +18,7 @@
         background-color: white;
     }
     
-    .right_block {
+    .right-block {
         margin: auto;
         width: 50%;
         height: 43em;
@@ -37,11 +37,11 @@
         margin: auto;
     }
     
-    p.right_block_button_text {
+    p.right-block__button__text {
         font-size: 150%;
     }
     
-    .left_block_title {
+    .left-block__title {
         display: flex;
         margin: auto;
         margin-top: 0em;
@@ -50,26 +50,26 @@
         font-weight: 400;
     }
     
-    .right_block_title {
+    .right-block__title {
         margin-left: 20%;
         margin-top: 0;
         font-size: 350%;
     }
     
-    p.left_block_text {
+    p.left-block__text {
         font-size: 200%;
         color: #000000;
         font-weight: normal;
         display: block
     }
     
-    p.left_block_button_text {
+    p.left-block__button__text {
         display: flex;
         font-size: 150%;
         color: #FFFFFF;
     }
     
-    .right_block_button {
+    .right-block__button {
         display: flex;
         width: 25em;
         height: 4em;
@@ -88,7 +88,7 @@
         height: 50em;
     }
     
-    .left_block_input {
+    .left-block__input {
         margin: auto;
         margin-right: auto;
         font-size: 20px;
@@ -102,7 +102,7 @@
         border-radius: 12px;
     }
     
-    .left_block_button {
+    .left-block__button {
         display: flex;
         align-content: center;
         width: 10em;
@@ -119,27 +119,27 @@
 
     <div class="main" role="main">
 
-        <div class="left_block">
+        <div class="left-block">
 
             <div style="align-self: center; ">
-                <p class="left_block_title">Войти в свой аккаунт</p>
+                <p class="left-block__title">Войти в свой аккаунт</p>
             </div>
 
             <div style=" align-self: center; margin-top: 7em;">
                 <div style="align-self: flex-start;">
-                    <p class="left_block_text">E-mail</p>
+                    <p class="left-block__text">E-mail</p>
                 </div>
 
                 <div>
-                    <input type="text" class="left_block_input" name="mail" id="mail">
+                    <input type="text" class="left-block__input" name="mail" id="mail">
                 </div>
 
                 <div style="align-self: flex-start; margin-top: 2em;">
-                    <p class="left_block_text">Пароль</p>
+                    <p class="left-block__text">Пароль</p>
                 </div>
 
                 <div>
-                    <input type="password" class="left_block_input" name="password" id="password">
+                    <input type="password" class="left-block__input" name="password" id="password">
                 </div>
 
                 <div>
@@ -148,22 +148,22 @@
             </div>
 
             <div style="display: flex; margin-top: 3em; align-self: center; ">
-                <a class="left_block_button" onclick="log_in()">
-                    <p class="left_block_button_text">Войти</p>
+                <a class="left-block__button" onclick="log_in()">
+                    <p class="left-block__button__ext">Войти</p>
                 </a>
             </div>
 
         </div>
 
-        <div class="right_block">
+        <div class="right-block">
 
-            <div class="right_block_title">
+            <div class="right-block__title">
                 <p>Еще нет в нашей системе?</p>
             </div>
 
             <div style="display: flex; margin-top: 5em;">
-                <a class="right_block_button" href="https://murahika.github.io/sign-up.component.html" style="text-decoration: none;">
-                    <p class="right_block_button_text">Создать</p>
+                <a class="right-block__button" href="https://murahika.github.io/sign-up.component.html" style="text-decoration: none;">
+                    <p class="right-block__button__text">Создать</p>
                 </a>
             </div>
 
