@@ -384,6 +384,8 @@
                                     count += 4;
                                 }
                             }
+                        } else if (xhr.status == 400) {
+                            empty.innerHTML = 'Введены некорректные данные!';
                         }
                     }
                 };
