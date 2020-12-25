@@ -7,6 +7,7 @@
         /* flex-grow: 2; */
         flex-direction: column;
         align-items: stretch;
+        margin: auto;
         margin-left: 3em;
     }
     
@@ -114,13 +115,57 @@
     .rezult {
         margin-top: 2em;
     }
+    
+    .input_manga {
+        margin-left: 2em;
+        width: 30em;
+        height: 2.7em;
+        background: #FFFFFF;
+        border: 1px solid #C2C2C2;
+        box-sizing: border-box;
+        box-shadow: 0px 0px 10px rgba(65, 76, 92, 0.5);
+        border-radius: 27px;
+    }
+    
+    .block {
+        display: flex;
+        flex-direction: column;
+        align-content: flex-start;
+        justify-content: flex-start;
+        align-items: flex-start;
+        /* margin-top: 10em; */
+        height: 13em;
+        width: 45em;
+        background: #EFF5F7;
+        box-shadow: 0px 0px 10px rgba(102, 117, 128, 0.25);
+        border-radius: 15px;
+        padding-left: 2em;
+        /* padding-top: 1em; */
+    }
+    
+    .input {
+        margin-top: 2em;
+        margin-bottom: 2em;
+        display: flex;
+        flex-direction: row;
+        align-content: flex-start;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
 </style>
 
 <body style="margin: auto;">
-
-
     <div class="main" role="main">
-
+        <div class="block" style="margin-bottom: 1.5em; margin-top: 2em;">
+            <div class="input">
+                <p class="title">Введите название:</p>
+                <input type="text" class="input_manga" id="Name" name="manga_check">
+            </div>
+            <div class="input">
+                <p class="title">Введите год издания:</p>
+                <input type="text" class="input_manga" id="Year" name="manga_check" style="width: 15em;">
+            </div>
+        </div>
         <div class="manga_type">
             <div>
                 <p class="title">Выберите тип</p>
@@ -440,6 +485,9 @@
             <a class="left_block_button" onclick="analyze()">
                 <p class="left_block_button_text">Анализ</p>
             </a>
+            <a class="left_block_button" onclick="statistic()">
+                <p class="left_block_button_text">Статистика</p>
+            </a>
         </div>
         <div class="rezult">
             <p>Нет результата</p>
@@ -518,6 +566,22 @@
 
         }
 
+        function statistic() {
+            var xhr = new XMLHttpRequest();
+            xhr.withCredentials = true;
+            xhr.open("GET", 'https://git.heroku.com/warm-anchorage-78769.git/predict_otchet/', true);
+            xhr.send();
+
+            xhr.onreadystatechange = function() { // Ждём ответа от сервера
+                if (xhr.readyState == 4) { // Ответ пришёл
+                    if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
+                        console.log(xhr.responseText)
+                        empty.innerHTML = "<img id='myImg' alt='your image' src='" + xhr.responseText + "' height=200 width=100>"
+                    }
+                }
+            };
+        }
+
         function analyze() {
             var chkd = document.querySelectorAll('input:checked');
             for (var i = 0; i < chkd.length; i++) {
@@ -589,7 +653,7 @@
             console.log(json)
 
 
-            xhr.open("POST", 'https://glacial-island-86307.herokuapp.com/register', true);
+            xhr.open("POST", 'https://git.heroku.com/warm-anchorage-78769.git', true);
             xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
 
