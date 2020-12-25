@@ -581,20 +581,9 @@
         }
 
         function statistic() {
-            var xhr = new XMLHttpRequest();
-            xhr.withCredentials = true;
-            xhr.open("GET", host + '/predict/', true);
-            xhr.send();
             var empty = document.getElementById('image');
+            get_image(empty);
 
-            xhr.onreadystatechange = function() { // Ждём ответа от сервера
-                console.log("predict start")
-                if (xhr.readyState == 4) { // Ответ пришёл
-                    if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
-                        get_image(empty);
-                    }
-                };
-            }
         }
 
         function analyze() {
@@ -691,16 +680,7 @@
                 }
             };
             xhr.send(json);
-            var empty = document.getElementById('image')
-            for (let index = 0; index < 3; index++) {
-                empty.innerHTML += "<img id='myImg' alt='your image' src='O:\\University\\4курс\\КПО\\курсовая\\MuraHika.github.io\\images\\info.png' height=200 width=100>"
 
-            }
-
-            var img = document.querySelector('img');
-            // img.src = URL.createObjectURL(this.files[0]);
-            // img.src = "O:\\University\\4курс\\КПО\\курсовая\\MuraHika.github.io\\images\\info.png";
-            // img.onload = imageIsLoaded;
         }
     </script>
 
