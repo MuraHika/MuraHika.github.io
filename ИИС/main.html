@@ -172,37 +172,37 @@
             </div>
             <div class="manga_type_row">
                 <div class="manga_type_row_div">
-                    <input type="radio" class="manga_type_check" id="Манга" name="manga_check" checked onClick="img_check_type();">
+                    <input type="radio" class="manga_type_check" id="Манга" name="manga_check" checked>
                     <!-- <img id="manga" class="manga_type_check" src="./res/uncheked.png" onClick="img_check();"> -->
                     <p> Манга</p>
                 </div>
 
                 <div class="manga_type_row_div">
-                    <input type="radio" class="manga_type_check" id="Манхва" name="manga_check" onClick="img_check_type();">
+                    <input type="radio" class="manga_type_check" id="Манхва" name="manga_check">
                     <!-- <img id="manhwa" class="manga_type_check" src="./res/uncheked.png" onClick="img_check();"> -->
                     <p> Манхва</p>
                 </div>
 
                 <div class="manga_type_row_div">
-                    <input type="radio" class="manga_type_check" id="Маньхуа" name="manga_check" onClick="img_check_type();">
+                    <input type="radio" class="manga_type_check" id="Маньхуа" name="manga_check">
                     <!-- <img id="manhua" class="manga_type_check" src="./res/uncheked.png" onClick="img_check();"> -->
                     <p> Маньхуа</p>
                 </div>
 
                 <div class="manga_type_row_div">
-                    <input type="radio" class="manga_type_check" id="Сингл" name="manga_check" onClick="img_check_type();">
+                    <input type="radio" class="manga_type_check" id="Сингл" name="manga_check">
                     <!-- <img id="single" class="manga_type_check" src="./res/uncheked.png" onClick="img_check();"> -->
                     <p> Сингл</p>
                 </div>
 
                 <div class="manga_type_row_div">
-                    <input type="radio" class="manga_type_check" id="Комикс" name="manga_check" onClick="img_check_type();">
+                    <input type="radio" class="manga_type_check" id="Комикс" name="manga_check">
                     <!-- <img id="comics" class="manga_type_check" src="./res/uncheked.png" onClick="img_check();"> -->
                     <p> Комикс</p>
                 </div>
 
                 <div class="manga_type_row_div">
-                    <input type="radio" class="manga_type_check" id="Руманга" name="manga_check" onClick="img_check_type();">
+                    <input type="radio" class="manga_type_check" id="Руманга" name="manga_check">
                     <!-- <img id="rumanga" class="manga_type_check" src="./res/uncheked.png" onClick="img_check();"> -->
                     <p> Руманга</p>
                 </div>
@@ -557,19 +557,6 @@
             "Яой": 'False'
         };
 
-        function img_check() {
-            // var chkd = document.querySelectorAll('input:checked');
-            // for (var i = 0; i < chkd.length; i++) {
-            //     if (chkd[i].getAttribute("name") != "manga_check") {
-            //         // console.log(chkd);
-            //         console.log(chkd[i].getAttribute("id"));
-            //     }
-            // }
-        }
-
-        function img_check_type() {
-
-        }
 
         function get_image(empty) {
             console.log("Мы вызвались!");
@@ -614,6 +601,7 @@
             var chkd = document.querySelectorAll('input:checked');
             var name_manga = document.getElementById('Name');
             var year_manga = document.getElementById('Year');
+            var category_manga = "Манга";
 
             for (var i = 0; i < chkd.length; i++) {
                 if (chkd[i].getAttribute("name") != "manga_check") {
@@ -628,20 +616,20 @@
                 }
             }
 
+            for (var key in dict_type) {
+                if (dict_type[key] == "True") {
+                    category_manga = key;
+                }
+            }
+            console.log(category_manga);
+
             var xhr = new XMLHttpRequest();
             xhr.withCredentials = true;
             var json = JSON.stringify({
                 "year": {
                     "Год": year_manga
                 },
-                "category": {
-                    "Манга": dict_type['Манга'],
-                    "Манхва": dict_type['Манхва'],
-                    "Маньхуа": dict_type['Маньхуа'],
-                    "Сингл": dict_type['Сингл'],
-                    "Комикс": dict_type['Комикс'],
-                    "Руманга": dict_type['Руманга']
-                },
+                "category": category_manga,
                 "genres": {
                     "Арт": dict_genre['Арт'],
                     "Бара": dict_genre['Бара'],
