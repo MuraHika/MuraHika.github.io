@@ -570,7 +570,7 @@
 
         }
 
-        function get_image() {
+        function get_image(empty) {
             console.log("Мы вызвались!");
             var xhr = new XMLHttpRequest();
             xhr.withCredentials = true;
@@ -596,6 +596,7 @@
         }
 
         function statistic() {
+            var empty = document.getElementById('image')
             var xhr = new XMLHttpRequest();
             xhr.withCredentials = true;
             xhr.open("GET", 'https://warm-anchorage-78769.herokuapp.com/predict/', true);
@@ -604,7 +605,7 @@
             xhr.onreadystatechange = function() { // Ждём ответа от сервера
                 if (xhr.readyState == 4) { // Ответ пришёл
                     if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
-                        get_image();
+                        get_image(empty);
                     }
                 };
                 console.log("did")
@@ -612,6 +613,7 @@
         }
 
         function analyze() {
+
             var chkd = document.querySelectorAll('input:checked');
             for (var i = 0; i < chkd.length; i++) {
                 if (chkd[i].getAttribute("name") != "manga_check") {
