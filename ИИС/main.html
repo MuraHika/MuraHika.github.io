@@ -668,14 +668,6 @@
                 }
             });
             console.log(json)
-
-            rec(xhr, empty);
-
-
-        }
-
-        function rec(xhr, empty) {
-            var rezult_analyze = document.getElementById('rezult');
             xhr.open("POST", host + '/predict_komiks/', true);
             xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
@@ -683,18 +675,37 @@
             xhr.onreadystatechange = function() { // Ждём ответа от сервера
                 if (xhr.readyState == 4) { // Ответ пришёл
                     if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
-                        if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
-                            rezult_analyze.innerHTML = "ТОП-5 лучших моделей:";
-                            empty.innerHTML = "<img id='myImg' alt='your image' style='width:40em; height:40em;' src='" + host + '/predict_komiks/' + "'>"
-                        } else {
-                            setTimeout(() => {
-                                rec(xhr, empty);
-                            }, 3000);
-                        }
+                        rec(empty);
                     }
                 }
             };
             xhr.send(json);
+            rec(xhr, empty);
+
+
+        }
+
+        function rec(empty) {
+            var rezult_analyze = document.getElementById('rezult');
+            var xhr = new XMLHttpRequest();
+            xhr.withCredentials = true;
+            xhr.open("GET", host + '/predict_komiks/', true);
+
+            xhr.send();
+
+            xhr.onreadystatechange = function() { // Ждём ответа от сервера
+                if (xhr.readyState == 4) { // Ответ пришёл
+                    if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
+                        rezult_analyze.innerHTML = "ТОП-5 лучших моделей:";
+                        empty.innerHTML = "<img id='myImg' alt='your image' style='width:40em; height:40em;' src='" + host + '/predict_komiks/' + "'>"
+                    } else {
+                        setTimeout(() => {
+                            rec(empty);
+                        }, 2000);
+                    }
+
+                }
+            };
         }
     </script>
 
