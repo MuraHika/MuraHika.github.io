@@ -502,6 +502,7 @@
 
     </div>
     <script async language="JavaScript">
+        var host = "http://127.0.0.1:8000"
         var dict_type = {
             "Манга": 'False',
             "Манхва": 'False',
@@ -574,47 +575,46 @@
             console.log("Мы вызвались!");
             var xhr = new XMLHttpRequest();
             xhr.withCredentials = true;
-            xhr.open("GET", 'https://warm-anchorage-78769.herokuapp.com/predict_otchet/', true);
+            xhr.open("GET", host + '/predict_otchet/', true);
             xhr.send();
 
             xhr.onreadystatechange = function() { // Ждём ответа от сервера
                 if (xhr.readyState == 4) { // Ответ пришёл
+                    console.log("получали изображение, а получили это:")
+                    console.log(xhr.responseText)
                     if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
-                        if (xhr.responseText != "results not ready") {
-                            console.log(xhr.responseText)
-                            empty.innerHTML = "<img id='myImg' alt='your image' src='" + xhr.responseText + "' height=200 width=100>"
-
-                        } else {
-                            setTimeout(() => {
-                                get_image();
-                            }, 3000);
-
-                        }
+                        empty.innerHTML = "<img id='myImg' alt='your image' src='" + host + '/predict_otchet/' + "'>"
+                    } else {
+                        setTimeout(() => {
+                            get_image(empty);
+                        }, 3000);
                     }
                 };
             }
         }
 
         function statistic() {
-            var empty = document.getElementById('image')
             var xhr = new XMLHttpRequest();
             xhr.withCredentials = true;
-            xhr.open("GET", 'https://warm-anchorage-78769.herokuapp.com/predict/', true);
+            xhr.open("GET", host + '/predict/', true);
             xhr.send();
+            var empty = document.getElementById('image');
 
             xhr.onreadystatechange = function() { // Ждём ответа от сервера
+                console.log("predict start")
                 if (xhr.readyState == 4) { // Ответ пришёл
                     if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
                         get_image(empty);
                     }
                 };
-                console.log("did")
             }
         }
 
         function analyze() {
-
             var chkd = document.querySelectorAll('input:checked');
+            var name_manga = document.getElementById('Name');
+            var year_manga = document.getElementById('Year');
+
             for (var i = 0; i < chkd.length; i++) {
                 if (chkd[i].getAttribute("name") != "manga_check") {
                     // console.log(chkd);
@@ -631,6 +631,8 @@
             var xhr = new XMLHttpRequest();
             xhr.withCredentials = true;
             var json = JSON.stringify({
+                "Название": name_manga,
+                "Год": year_manga,
                 "Манга": dict_type['Манга'],
                 "Манхва": dict_type['Манхва'],
                 "Маньхуа": dict_type['Маньхуа'],
@@ -684,7 +686,7 @@
             console.log(json)
 
 
-            xhr.open("POST", 'https://warm-anchorage-78769.herokuapp.com/', true);
+            xhr.open("POST", host + '/predict_komiks/', true);
             xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
 
