@@ -570,6 +570,31 @@
 
         }
 
+        function get_image() {
+            console.log("Мы вызвались!");
+            var xhr = new XMLHttpRequest();
+            xhr.withCredentials = true;
+            xhr.open("GET", 'https://warm-anchorage-78769.herokuapp.com/predict_otchet/', true);
+            xhr.send();
+
+            xhr.onreadystatechange = function() { // Ждём ответа от сервера
+                if (xhr.readyState == 4) { // Ответ пришёл
+                    if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
+                        if (xhr.responseText != "results not ready") {
+                            console.log(xhr.responseText)
+                            empty.innerHTML = "<img id='myImg' alt='your image' src='" + xhr.responseText + "' height=200 width=100>"
+
+                        } else {
+                            setTimeout(() => {
+                                get_image();
+                            }, 3000);
+
+                        }
+                    }
+                };
+            }
+        }
+
         function statistic() {
             var xhr = new XMLHttpRequest();
             xhr.withCredentials = true;
@@ -579,19 +604,10 @@
             xhr.onreadystatechange = function() { // Ждём ответа от сервера
                 if (xhr.readyState == 4) { // Ответ пришёл
                     if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
-
-                        xhr.open("GET", 'https://warm-anchorage-78769.herokuapp.com/predict_otchet/', true);
-                        xhr.send();
-                        xhr.onreadystatechange = function() { // Ждём ответа от сервера
-                            if (xhr.readyState == 4) { // Ответ пришёл
-                                if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
-                                    console.log(xhr.responseText)
-                                    empty.innerHTML = "<img id='myImg' alt='your image' src='" + xhr.responseText + "' height=200 width=100>"
-                                }
-                            };
-                        }
+                        get_image();
                     }
                 };
+                console.log("did")
             }
         }
 
