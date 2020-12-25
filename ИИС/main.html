@@ -674,9 +674,9 @@
 
             xhr.onreadystatechange = function() { // Ждём ответа от сервера
                 if (xhr.readyState == 4) { // Ответ пришёл
-                    if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
-                        rec(empty);
-                    }
+
+                    rec(empty);
+
                 }
             };
             xhr.send(json);
