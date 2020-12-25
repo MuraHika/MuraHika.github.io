@@ -494,7 +494,7 @@
             </div>
         </div>
         <div class="rezult">
-            <p>Нет результата</p>
+            <p id="rezult">Нет результата</p>
         </div>
         <div id="image" style="display: flex; flex-direction: column;">
             <!-- <img id="myImg" alt="your image" height=200 width=100> -->
@@ -591,6 +591,7 @@
             var name_manga = document.getElementById('Name');
             var year_manga = document.getElementById('Year');
             var category_manga = "Манга";
+            var rezult_analyze = document.getElementById('rezult');
 
             for (var i = 0; i < chkd.length; i++) {
                 if (chkd[i].getAttribute("name") != "manga_check") {
@@ -675,7 +676,8 @@
             xhr.onreadystatechange = function() { // Ждём ответа от сервера
                 if (xhr.readyState == 4) { // Ответ пришёл
                     if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
-
+                        rezult_analyze.innerHTML = "ТОП-5 лучших моделей:";
+                        empty.innerHTML = "<img id='myImg' alt='your image' src='" + host + '/predict_komiks/' + "'>"
                     }
                 }
             };
