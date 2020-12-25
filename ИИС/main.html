@@ -481,13 +481,17 @@
                 </div>
             </div>
         </div>
-        <div class="button">
-            <a class="left_block_button" onclick="analyze()">
-                <p class="left_block_button_text">Анализ</p>
-            </a>
-            <a class="left_block_button" onclick="statistic()">
-                <p class="left_block_button_text">Статистика</p>
-            </a>
+        <div style="display: flex; flex-direction: row;">
+            <div class="button">
+                <a class="left_block_button" onclick="analyze()">
+                    <p class="left_block_button_text">Анализ</p>
+                </a>
+            </div>
+            <div class="button" style="margin-left: 3em;">
+                <a class="left_block_button" onclick="statistic()">
+                    <p class="left_block_button_text" style="margin-left: 23%;">Статистика</p>
+                </a>
+            </div>
         </div>
         <div class="rezult">
             <p>Нет результата</p>
