@@ -678,7 +678,7 @@
                 if (xhr.readyState == 4) { // Ответ пришёл
                     if (xhr.status == 200) { // Сервер вернул код 200 (что хорошо)
                         rezult_analyze.innerHTML = "ТОП-5 лучших моделей:";
-                        empty.innerHTML = "<img id='myImg' alt='your image' src='" + host + '/predict_komiks/' + "'>"
+                        empty.innerHTML = "<img id='myImg' alt='your image' style='width:40em; height:40em;' src='" + host + '/predict_komiks/' + "'>"
                     }
                 }
             };
