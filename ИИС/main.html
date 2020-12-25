@@ -573,7 +573,7 @@
         function statistic() {
             var xhr = new XMLHttpRequest();
             xhr.withCredentials = true;
-            xhr.open("GET", 'https://git.heroku.com/warm-anchorage-78769.git/predict_otchet/', true);
+            xhr.open("GET", 'https://warm-anchorage-78769.herokuapp.com/predict_otchet/', true);
             xhr.send();
 
             xhr.onreadystatechange = function() { // Ждём ответа от сервера
@@ -657,7 +657,7 @@
             console.log(json)
 
 
-            xhr.open("POST", 'https://git.heroku.com/warm-anchorage-78769.git', true);
+            xhr.open("POST", 'https://warm-anchorage-78769.herokuapp.com/', true);
             xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
 
