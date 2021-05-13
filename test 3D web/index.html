@@ -12,6 +12,7 @@
     <script src="three.min.js"></script>
     <script src="GLTFLoader.js"></script>
     <script src="OrbitControls.js"></script>
+    <script src="cor.php"></script>
 
     <script>
         // let scene, camera, renderer;
@@ -93,7 +94,7 @@
             scene = new THREE.Scene();
 
             const gltfLoader = new THREE.GLTFLoader();
-            const url = 'https://github.com/MuraHika/MuraHika.github.io/blob/master/test%203D%20web/scene.gltf';
+            const url = 'O:\University\4курс\КонПО\курсовая\MuraHika.github.io\test 3D web\scene.gltf';
             gltfLoader.load(url, (gltf) => {
                 const root = gltf.scene;
                 scene.add(root);
